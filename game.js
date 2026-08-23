@@ -1,78 +1,52 @@
 let chicken = {
-
     stage: "egg",
-
     level: 0,
-
     hatchTime: Date.now() + 10000
-
 };
 
 
-
-function updateGame(){
-
+function updateGame() {
 
     let icon = "🥚";
+    let text = "Trứng";
+    let level = 0;
 
 
-    if(chicken.stage == "egg"){
-
-        icon = "🥚";
-        chicken.level = 0;
-
-    }
-
-
-    if(chicken.stage == "newborn"){
+    if (chicken.stage === "newborn") {
 
         icon = "🐣";
-        chicken.level = 3;
+        text = "Gà mới nở";
+        level = 3;
 
     }
-
-
-    if(chicken.stage == "baby"){
-
-        icon = "🐥";
-        chicken.level = 5;
-
-    }
-
-
-    if(chicken.stage == "adult"){
-
-        icon = "🐓";
-        chicken.level = 10;
-
-    }
-
 
 
     document.getElementById("chicken").innerHTML = icon;
 
+    document.getElementById("level").innerHTML = level;
 
-    document.getElementById("level").innerHTML =
-    chicken.level;
-
+    document.getElementById("stage").innerHTML = text;
 
 }
 
 
 
-// kiểm tra thời gian nở
-
-function checkEgg(){
+function checkEgg() {
 
 
-    if(
-        chicken.stage == "egg" &&
-        Date.now() >= chicken.hatchTime
-    ){
+    let now = Date.now();
+
+
+    if (
+        chicken.stage === "egg" &&
+        now >= chicken.hatchTime
+    ) {
+
 
         chicken.stage = "newborn";
 
-        alert("🥚 Trứng đã nở thành 🐣");
+
+        alert("🎉 Trứng đã nở!");
 
 
     }
@@ -84,10 +58,7 @@ function checkEgg(){
 
 
 
-// chạy liên tục
-
 setInterval(checkEgg,1000);
-
 
 
 updateGame();
