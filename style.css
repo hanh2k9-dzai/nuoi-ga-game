@@ -1,135 +1,132 @@
-* {
-    box-sizing: border-box;
-}
+body{
 
+    margin:0;
 
-body {
+    height:100vh;
 
-    margin: 0;
-
-    height: 100vh;
-
-    background: linear-gradient(
+    background:
+    linear-gradient(
         #87ceeb,
-        #b7f7a8
+        #a8e063
     );
 
-    font-family: Arial, sans-serif;
+    display:flex;
 
-    display: flex;
+    justify-content:center;
 
-    justify-content: center;
+    align-items:center;
 
-    align-items: center;
-
-}
-
-
-
-.game {
-
-    width: 350px;
-
-    height: 650px;
-
-    background: white;
-
-    border-radius: 30px;
-
-    text-align: center;
-
-    padding: 30px;
-
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    font-family:Arial;
 
 }
 
 
 
-h1 {
+.game{
 
-    color: #ff9800;
 
-    font-size: 35px;
+    width:350px;
+
+    height:600px;
+
+
+    background:white;
+
+
+    border-radius:30px;
+
+
+    text-align:center;
+
+
+    padding:30px;
+
 
 }
 
 
 
-#chicken {
+h1{
 
-    font-size: 120px;
-
-    margin: 40px 0;
-
-    animation: jump 1s infinite;
+    color:#ff9800;
 
 }
 
 
 
-@keyframes jump {
+#chicken{
 
-    50% {
 
-        transform: translateY(-10px);
+    font-size:120px;
+
+
+    margin:50px;
+
+
+    animation:bounce 1s infinite;
+
+}
+
+
+
+@keyframes bounce{
+
+
+    50%{
+
+        transform:translateY(-15px);
 
     }
 
-}
-
-
-
-.stats {
-
-    background: #fff3cd;
-
-    border-radius: 20px;
-
-    padding: 15px;
-
-    font-size: 20px;
-
-    text-align: left;
 
 }
 
 
 
-.stats p {
+.stats{
 
-    margin: 10px;
+
+    background:#fff3cd;
+
+
+    border-radius:20px;
+
+
+    padding:15px;
+
+
+    font-size:20px;
+
 
 }
 
 
 
-button {
-
-    margin-top: 40px;
-
-    width: 220px;
-
-    height: 60px;
-
-    border: none;
-
-    border-radius: 30px;
-
-    background: #ff9800;
-
-    color: white;
-
-    font-size: 25px;
-
-    cursor: pointer;
-
-}
+button{
 
 
+    margin-top:40px;
 
-button:active {
 
-    transform: scale(0.95);
+    width:220px;
+
+
+    height:60px;
+
+
+    border:none;
+
+
+    border-radius:30px;
+
+
+    background:#ff9800;
+
+
+    color:white;
+
+
+    font-size:25px;
+
 
 }
