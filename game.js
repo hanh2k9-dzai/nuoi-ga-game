@@ -1,7 +1,5 @@
 let chicken = {
 
-    stage: "egg",
-
     level: 1,
 
     exp: 0,
@@ -14,50 +12,50 @@ let chicken = {
 
 
 
-function feed() {
+function feed(){
+
 
     chicken.food += 10;
+
     chicken.exp += 10;
+
     chicken.coin += 1;
 
 
-    if (chicken.exp >= 100) {
+
+    if(chicken.food > 100){
+
+        chicken.food = 100;
+
+    }
+
+
+
+    if(chicken.exp >= 100){
+
 
         chicken.level += 1;
+
         chicken.exp = 0;
 
+
+        alert(
+            "🎉 Gà lên level " 
+            + chicken.level
+        );
+
     }
 
 
-    checkGrowth();
 
-    updateGame();
+    updateChicken();
 
 }
 
 
 
-function checkGrowth() {
 
-
-    if (chicken.level >= 3) {
-
-        chicken.stage = "baby";
-
-    }
-
-
-    if (chicken.level >= 8) {
-
-        chicken.stage = "adult";
-
-    }
-
-}
-
-
-
-function updateGame() {
+function updateChicken(){
 
 
     document.getElementById("level").innerHTML =
@@ -77,23 +75,28 @@ function updateGame() {
 
 
 
-    let image = "🥚";
+    let pet = "🥚";
 
 
-    if (chicken.stage == "baby") {
 
-        image = "🐣";
+    if(chicken.level >= 3){
 
-    }
-
-
-    if (chicken.stage == "adult") {
-
-        image = "🐔";
+        pet = "🐣";
 
     }
 
 
-    document.getElementById("chicken").innerHTML = image;
+
+    if(chicken.level >= 8){
+
+        pet = "🐔";
+
+    }
+
+
+
+    document.getElementById("chicken").innerHTML =
+        pet;
+
 
 }
