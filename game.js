@@ -1,102 +1,93 @@
 let chicken = {
 
-    level: 1,
+    stage: "egg",
 
-    exp: 0,
+    level: 0,
 
-    food: 100,
-
-    coin: 0
+    hatchTime: Date.now() + 10000
 
 };
 
 
 
-function feed(){
+function updateGame(){
 
 
-    chicken.food += 10;
-
-    chicken.exp += 10;
-
-    chicken.coin += 1;
+    let icon = "🥚";
 
 
+    if(chicken.stage == "egg"){
 
-    if(chicken.food > 100){
+        icon = "🥚";
+        chicken.level = 0;
 
-        chicken.food = 100;
+    }
+
+
+    if(chicken.stage == "newborn"){
+
+        icon = "🐣";
+        chicken.level = 3;
+
+    }
+
+
+    if(chicken.stage == "baby"){
+
+        icon = "🐥";
+        chicken.level = 5;
+
+    }
+
+
+    if(chicken.stage == "adult"){
+
+        icon = "🐓";
+        chicken.level = 10;
 
     }
 
 
 
-    if(chicken.exp >= 100){
-
-
-        chicken.level += 1;
-
-        chicken.exp = 0;
-
-
-        alert(
-            "🎉 Gà lên level " 
-            + chicken.level
-        );
-
-    }
-
-
-
-    updateChicken();
-
-}
-
-
-
-
-function updateChicken(){
+    document.getElementById("chicken").innerHTML = icon;
 
 
     document.getElementById("level").innerHTML =
-        chicken.level;
-
-
-    document.getElementById("exp").innerHTML =
-        chicken.exp;
-
-
-    document.getElementById("food").innerHTML =
-        chicken.food;
-
-
-    document.getElementById("coin").innerHTML =
-        chicken.coin;
-
-
-
-    let pet = "🥚";
-
-
-
-    if(chicken.level >= 3){
-
-        pet = "🐣";
-
-    }
-
-
-
-    if(chicken.level >= 8){
-
-        pet = "🐔";
-
-    }
-
-
-
-    document.getElementById("chicken").innerHTML =
-        pet;
+    chicken.level;
 
 
 }
+
+
+
+// kiểm tra thời gian nở
+
+function checkEgg(){
+
+
+    if(
+        chicken.stage == "egg" &&
+        Date.now() >= chicken.hatchTime
+    ){
+
+        chicken.stage = "newborn";
+
+        alert("🥚 Trứng đã nở thành 🐣");
+
+
+    }
+
+
+    updateGame();
+
+}
+
+
+
+// chạy liên tục
+
+setInterval(checkEgg,1000);
+
+
+
+updateGame();
