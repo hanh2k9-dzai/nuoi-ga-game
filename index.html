@@ -23,7 +23,6 @@
 
 <!-- ================= NHÀ ================= -->
 
-
 <section id="homePage" class="page active">
 
 
@@ -49,9 +48,10 @@ Trứng đang nở...
 
 <div id="hatchTime">
 
-⏳ 10s
+⏳
 
 </div>
+
 
 
 
@@ -108,83 +108,6 @@ Trứng đang nở...
 </div>
 
 
-</div>
-
-
-
-
-
-
-
-<h3>
-
-🍚 Cho gà ăn
-
-</h3>
-
-
-
-<div class="feedButtons">
-
-
-<button onclick="feedChicken('normal')">
-
-🌽 Cám thường
-
-<br>
-
-x<span id="feedNormal">0</span>
-
-</button>
-
-
-
-<button onclick="feedChicken('super')">
-
-✨ Cám siêu cấp
-
-<br>
-
-x<span id="feedSuper">0</span>
-
-</button>
-
-
-
-<button onclick="feedChicken('weight')">
-
-🐷 Cám tăng trọng
-
-<br>
-
-x<span id="feedWeight">0</span>
-
-</button>
-
-
-
-<button onclick="feedChicken('grow')">
-
-⚡ Cám siêu tăng trưởng
-
-<br>
-
-x<span id="feedGrow">0</span>
-
-</button>
-
-
-
-<button onclick="feedChicken('vip')">
-
-🌟 Cám siêu VIP
-
-<br>
-
-x<span id="feedVip">0</span>
-
-</button>
-
 
 </div>
 
@@ -194,7 +117,7 @@ x<span id="feedVip">0</span>
 
 <p>
 
-🐔 Đang chọn:
+🐔 Gà đang chọn:
 
 <span id="selectedChicken">
 
@@ -203,7 +126,6 @@ Chưa chọn
 </span>
 
 </p>
-
 
 
 </section>
@@ -222,15 +144,8 @@ Chưa chọn
 <section id="coopPage" class="page">
 
 
-<h2>
+<h2>🏠 Chuồng</h2>
 
-🏠 Chuồng
-
-</h2>
-
-
-
-<div class="coopButtons">
 
 
 
@@ -250,6 +165,7 @@ Miễn phí
 
 
 
+
 <button onclick="openCoop('super')">
 
 🔥 Chuồng siêu cấp
@@ -263,6 +179,7 @@ Miễn phí
 5 slot
 
 </button>
+
 
 
 
@@ -281,16 +198,11 @@ Miễn phí
 </button>
 
 
-</div>
-
-
-
 
 
 <div id="coopAction">
 
 </div>
-
 
 
 
@@ -320,11 +232,45 @@ Miễn phí
 
 
 
+<!-- ================= KHO GÀ ================= -->
+
+
+<section id="chickenStoragePage" class="page">
+
+
+<h2>🐔 Kho gà</h2>
+
+
+
+<p>
+
+Gà chưa thả vào chuồng
+
+</p>
+
+
+
+<div id="chickenStorage">
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
 <!-- ================= CHI TIẾT GÀ ================= -->
 
 
 <div id="chickenDetail" class="detailBox">
-
 
 
 <h2>
@@ -335,28 +281,23 @@ Miễn phí
 
 
 
-
 <div id="detailContent">
-
 
 </div>
 
 
 
 
-
 <button onclick="toggleFeedMenu()">
 
-🍚 Cho gà ăn ▼
+🍚 Cho ăn ▼
 
 </button>
 
 
 
 
-
-<div id="feedMenu" class="feedMenu">
-
+<div id="feedMenu">
 
 
 <button onclick="feedDetailChicken('normal')">
@@ -442,9 +383,10 @@ x<span id="detailFeedVip">0</span>
 </button>
 
 
-
 </div>
-<!-- ================= BÁN / ĐÓNG CHI TIẾT ================= -->
+
+
+
 
 
 <button id="sellChickenBtn" onclick="sellDetailChicken()">
@@ -465,27 +407,13 @@ x<span id="detailFeedVip">0</span>
 
 
 </div>
-
-
-
-
-
-
-
-
-
 <!-- ================= KHO TRỨNG ================= -->
 
 
 <section id="storagePage" class="page">
 
 
-<h2>
-
-🥚 Kho trứng
-
-</h2>
-
+<h2>🥚 Kho trứng</h2>
 
 
 
@@ -496,11 +424,7 @@ x<span id="detailFeedVip">0</span>
 
 🥚 Trứng thường:
 
-<span id="eggNormal">
-
-0
-
-</span>
+<span id="eggNormal">0</span>
 
 </p>
 
@@ -514,17 +438,11 @@ Bán 25 xu
 
 
 
-
-
 <p>
 
 ✨ Trứng siêu cấp:
 
-<span id="eggSuper">
-
-0
-
-</span>
+<span id="eggSuper">0</span>
 
 </p>
 
@@ -538,17 +456,11 @@ Bán 50 xu
 
 
 
-
-
 <p>
 
 🟡 Trứng vàng:
 
-<span id="eggGold">
-
-0
-
-</span>
+<span id="eggGold">0</span>
 
 </p>
 
@@ -562,17 +474,11 @@ Bán 1000 xu
 
 
 
-
-
 <p>
 
 💎 Trứng kim cương:
 
-<span id="eggDiamond">
-
-0
-
-</span>
+<span id="eggDiamond">0</span>
 
 </p>
 
@@ -604,11 +510,7 @@ Bán 3500 xu
 <section id="shopPage" class="page">
 
 
-<h2>
-
-🏪 Shop gà
-
-</h2>
+<h2>🏪 Shop gà</h2>
 
 
 
@@ -683,11 +585,7 @@ Bán 3500 xu
 <section id="feedShopPage" class="page">
 
 
-<h2>
-
-🍚 Shop cám
-
-</h2>
+<h2>🍚 Shop cám</h2>
 
 
 
@@ -796,11 +694,7 @@ Bán 3500 xu
 <section id="questPage" class="page">
 
 
-<h2>
-
-🎯 Nhiệm vụ
-
-</h2>
+<h2>🎯 Nhiệm vụ</h2>
 
 
 
@@ -837,12 +731,7 @@ Bán 3500 xu
 <section id="accountPage" class="page">
 
 
-<h2>
-
-👤 Tài khoản
-
-</h2>
-
+<h2>👤 Tài khoản</h2>
 
 
 
@@ -941,7 +830,7 @@ Player
 
 <button onclick="withdrawMoney()">
 
-💸 Rút tiền
+💸 Rút tiền demo
 
 </button>
 
@@ -958,10 +847,9 @@ Player
 
 
 
-
 <h3>
 
-📜 Lịch sử
+📜 Lịch sử giao dịch
 
 </h3>
 
@@ -988,7 +876,7 @@ Chưa có giao dịch
 
 
 
-<!-- ================= MENU ================= -->
+<!-- ================= MENU DƯỚI ================= -->
 
 
 <nav class="menu">
@@ -1007,6 +895,15 @@ Chưa có giao dịch
 <button onclick="openPage('coopPage')">
 
 🐔
+
+</button>
+
+
+
+
+<button onclick="openPage('chickenStoragePage')">
+
+🐣
 
 </button>
 
@@ -1068,7 +965,6 @@ Chưa có giao dịch
 
 
 <script src="game.js"></script>
-
 
 
 </body>
