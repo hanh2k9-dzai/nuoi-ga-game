@@ -1,21 +1,31 @@
+*{
+
+box-sizing:border-box;
+
+}
+
+
 body{
 
 margin:0;
 
-font-family:Arial;
+font-family:Arial, sans-serif;
 
 background:#bdefff;
 
+padding-bottom:90px;
+
 }
+
 
 
 .game{
 
 max-width:420px;
 
-margin:auto;
-
 min-height:100vh;
+
+margin:auto;
 
 background:white;
 
@@ -27,13 +37,50 @@ padding:20px;
 
 
 
+.page{
+
+display:none;
+
+}
+
+
+
+.page.active{
+
+display:block;
+
+}
+
+
+
+
+h1{
+
+color:#ff9900;
+
+font-size:40px;
+
+}
+
+
+
+h2{
+
+color:#555;
+
+}
+
+
+
 #chicken{
 
 font-size:120px;
 
-margin:20px;
+margin:20px 0;
 
 }
+
+
 
 
 
@@ -47,6 +94,8 @@ justify-content:center;
 
 gap:10px;
 
+margin:20px 0;
+
 }
 
 
@@ -59,7 +108,25 @@ padding:12px;
 
 border-radius:20px;
 
-min-width:80px;
+min-width:90px;
+
+font-size:18px;
+
+}
+
+
+
+
+
+.box{
+
+background:#fff5c7;
+
+border-radius:25px;
+
+padding:20px;
+
+margin:20px 0;
 
 font-size:20px;
 
@@ -67,23 +134,17 @@ font-size:20px;
 
 
 
-button{
 
-border:none;
 
-border-radius:20px;
+#timeBox{
 
-padding:12px;
+font-size:22px;
 
-margin:5px;
-
-background:#ffae00;
-
-color:white;
-
-font-size:16px;
+margin:15px;
 
 }
+
+
 
 
 
@@ -95,7 +156,39 @@ flex-wrap:wrap;
 
 justify-content:center;
 
+gap:8px;
+
 }
+
+
+
+
+button{
+
+border:none;
+
+background:#ffae00;
+
+color:white;
+
+padding:12px 15px;
+
+border-radius:25px;
+
+font-size:16px;
+
+cursor:pointer;
+
+}
+
+
+
+button:hover{
+
+opacity:0.8;
+
+}
+
 
 
 
@@ -105,6 +198,10 @@ margin-top:20px;
 
 }
 
+
+
+
+/* MENU DƯỚI */
 
 
 .menu{
@@ -117,19 +214,23 @@ left:50%;
 
 transform:translateX(-50%);
 
+width:100%;
+
 max-width:420px;
 
-width:100%;
+background:white;
 
 display:flex;
 
 justify-content:space-around;
 
-background:white;
-
-padding:10px 0;
+padding:8px 5px;
 
 border-radius:25px 25px 0 0;
+
+box-shadow:0 -3px 10px #ccc;
+
+z-index:10;
 
 }
 
@@ -141,6 +242,33 @@ background:#ffe082;
 
 color:#333;
 
-font-size:14px;
+font-size:13px;
+
+padding:8px;
+
+margin:0;
+
+}
+
+
+
+
+/* TRANG SHOP */
+
+#shopPage button{
+
+margin:10px;
+
+width:80%;
+
+}
+
+
+
+/* TÀI KHOẢN */
+
+#accountPage button{
+
+background:#4caf50;
 
 }
