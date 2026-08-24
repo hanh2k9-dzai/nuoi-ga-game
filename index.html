@@ -4,6 +4,7 @@
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Nuôi Gà</title>
@@ -19,8 +20,8 @@
 <div class="game">
 
 
-
 <!-- ================= NHÀ ================= -->
+
 
 <div id="homePage" class="page active">
 
@@ -39,7 +40,6 @@
 
 
 
-
 <div class="stats">
 
 
@@ -54,35 +54,85 @@
 
 
 <div class="status">
-⭐ <span id="level">0</span>
+⭐ Lv <span id="level">1</span>
 </div>
 
 
 <div class="status">
-🔥 <span id="exp">0</span>
+🔥 <span id="exp">0/100</span>
+</div>
+
+
+<div class="status">
+🎂 <span id="age">0</span>/<span id="maxAge">7</span>
 </div>
 
 
 </div>
 
 
+
+
+
+<h3>🍚 Cho ăn</h3>
 
 
 <div class="buttons">
 
 
-<button onclick="feedSelected(10)">
+<button onclick="feedChicken(10)">
 🌽 Cám thường
+<br>
++10 EXP
 </button>
 
 
-<button onclick="feedSelected(50)">
-⚡ Cám tăng
+
+<button onclick="feedChicken(30)">
+🐷 Cám tăng trọng
+<br>
++30 EXP
+</button>
+
+
+
+<button onclick="feedChicken(50)">
+🐖 Cám con heo
+<br>
++50 EXP
+</button>
+
+
+
+<button onclick="feedChicken(100)">
+⚡ Cám tăng trưởng
+<br>
++100 EXP
+</button>
+
+
+
+<button onclick="feedChicken(300)">
+✨ Cám siêu VIP
+<br>
++300 EXP
 </button>
 
 
 
 </div>
+
+
+
+<p>
+
+🐔 Đang chọn:
+
+<span id="selectedChicken">
+Chưa chọn
+</span>
+
+</p>
 
 
 
@@ -103,27 +153,36 @@
 
 
 <h2 id="coopName">
+
 🏠 Chuồng thường
+
 </h2>
 
 
+
 <p>
+
 Sức chứa:
+
 <span id="coopCapacity">
 3
 </span>
+
+gà
+
 </p>
 
 
 
 <div id="chickenSlots" class="slots">
 
-
 </div>
 
 
 
-<h3>Đổi chuồng</h3>
+
+
+<h3>🔄 Đổi chuồng</h3>
 
 
 
@@ -136,6 +195,7 @@ Sức chứa:
 25.000 xu
 
 </button>
+
 
 
 
@@ -184,6 +244,7 @@ Sức chứa:
 </p>
 
 
+
 <p>
 ✨ Trứng siêu cấp:
 
@@ -216,7 +277,17 @@ Sức chứa:
 </p>
 
 
+
 </div>
+
+
+
+
+<button onclick="sellNormalEgg()">
+
+🥚 Bán trứng thường
+
+</button>
 
 
 
@@ -238,6 +309,9 @@ Sức chứa:
 
 <h2>🏪 Shop gà</h2>
 
+
+
+<div class="box">
 
 
 
@@ -273,7 +347,7 @@ Sức chứa:
 
 
 
-<button>
+<button onclick="buyGoldChicken()">
 
 🟡 Gà vàng
 
@@ -289,7 +363,7 @@ Sức chứa:
 
 
 
-<button>
+<button onclick="buyDiamondChicken()">
 
 💎 Gà kim cương
 
@@ -298,6 +372,10 @@ Sức chứa:
 80000đ
 
 </button>
+
+
+
+</div>
 
 
 
@@ -320,11 +398,12 @@ Sức chứa:
 <h2>🎯 Nhiệm vụ</h2>
 
 
+
 <div class="box">
 
 
 <p>
-Nhận thưởng random
+🎁 Thưởng random
 </p>
 
 
@@ -333,9 +412,10 @@ Nhận thưởng random
 </p>
 
 
+
 <button onclick="questReward()">
 
-🎁 Nhận
+Nhận thưởng
 
 </button>
 
@@ -406,7 +486,9 @@ ChickenPlayer
 </button>
 
 
+
 </div>
+
 
 
 </div>
@@ -423,6 +505,7 @@ ChickenPlayer
 
 
 <div class="menu">
+
 
 
 <button onclick="openPage('homePage')">
@@ -482,6 +565,7 @@ Nhiệm vụ
 TK
 
 </button>
+
 
 
 </div>
