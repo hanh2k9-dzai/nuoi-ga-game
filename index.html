@@ -27,95 +27,124 @@
 </div>
 
 
+<h2 id="stage">
+Trứng
+</h2>
+
+
 
 <div class="stats">
 
 
-<p>⭐ Level:
+<div class="status">
+⭐ Lv
 <span id="level">0</span>
-</p>
+</div>
 
 
-<p>🐣 Trạng thái:
-<span id="stage">Trứng</span>
-</p>
-
-
-<p>🔥 EXP:
+<div class="status">
+🔥
 <span id="exp">0/100</span>
-</p>
+</div>
 
 
-<p>🪙 Xu:
+<div class="status">
+🪙
 <span id="coin">0</span>
-</p>
+</div>
 
 
-<p>🥚 Trứng thường:
+<div class="status">
+🥚
 <span id="egg">0</span>
-</p>
+</div>
 
 
-<p>🎂 Tuổi:
-<span id="age">0</span>/<span id="maxAge">7</span> ngày
-</p>
-
-
-
-<p id="timeBox">
-⏳ <span id="time">Còn 10s</span>
-</p>
-
+<div class="status">
+🎂
+<span id="age">0</span>/<span id="maxAge">7</span>
+</div>
 
 
 </div>
 
+
+
+
+<div id="timeBox">
+
+⏳ <span id="time">Còn 10s</span>
+
+</div>
+
+
+
+
+
+<div class="feed-box">
 
 
 <h3>🍚 Cho ăn</h3>
 
 
+
+<div class="buttons">
+
+
 <button onclick="camThuong()">
-🌽 Cám thường +10 EXP
+🌽 +10
 </button>
 
 
 <button onclick="camTangTrong()">
-🐷 Cám tăng trọng +30 EXP
+🐷 +30
 </button>
 
 
 <button onclick="camConHeo()">
-🐖 Cám con heo +50 EXP
+🐖 +50
 </button>
 
 
 <button onclick="camTangTruong()">
-⚡ Cám tăng trưởng +100 EXP
+⚡ +100
 </button>
 
 
 <button onclick="camSieuVip()">
-✨ Cám siêu VIP +300 EXP
+✨ +300
 </button>
 
 
+</div>
 
-<br><br>
+
+</div>
+
+
+
+
+
+<div class="actions">
 
 
 <button onclick="sellEgg()">
-🥚 Bán trứng +25 xu
+🥚 Bán trứng
 </button>
+
 
 
 <button id="sellButton" onclick="sellChicken()" style="display:none;">
-🐔 Bán gà +600 xu
+🐔 Bán gà
 </button>
+
+
+</div>
 
 
 
 </div>
+
 
 
 <script src="game.js"></script>
