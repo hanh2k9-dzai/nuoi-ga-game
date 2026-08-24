@@ -177,7 +177,7 @@ function feed(){
 
     chicken.food+=10;
 
-    chicken.exp+=10;
+    chicken.exp+=100;
 
 
 
