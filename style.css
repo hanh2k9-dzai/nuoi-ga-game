@@ -40,6 +40,7 @@ text-align:center;
 
 
 
+
 .page{
 
 display:none;
@@ -90,6 +91,7 @@ color:#777;
 
 
 
+
 /* =================
 GÀ CHÍNH
 ================= */
@@ -130,7 +132,7 @@ margin:10px;
 
 
 /* =================
-THỐNG KÊ
+THÔNG TIN
 ================= */
 
 
@@ -157,6 +159,8 @@ border-radius:20px;
 padding:10px;
 
 min-width:90px;
+
+font-size:15px;
 
 }
 
@@ -204,6 +208,10 @@ opacity:0.8;
 
 
 
+/* =================
+CÁM
+================= */
+
 
 .feedButtons{
 
@@ -215,6 +223,31 @@ justify-content:center;
 
 }
 
+
+
+
+.feedMenu{
+
+display:none;
+
+background:#fff5c7;
+
+border-radius:20px;
+
+padding:10px;
+
+margin:10px 0;
+
+}
+
+
+
+
+.feedMenu button{
+
+width:90%;
+
+}
 
 
 
@@ -244,10 +277,29 @@ margin:15px 0;
 
 
 
-
 /* =================
 CHUỒNG
 ================= */
+
+
+.coopButtons{
+
+display:flex;
+
+flex-wrap:wrap;
+
+justify-content:center;
+
+}
+
+
+
+.coopButtons button{
+
+width:90%;
+
+}
+
 
 
 .slots{
@@ -268,9 +320,9 @@ margin-top:20px;
 
 .slot{
 
-width:110px;
+width:115px;
 
-min-height:150px;
+min-height:160px;
 
 background:#fff0b0;
 
@@ -306,9 +358,8 @@ font-size:45px;
 
 
 
-
 /* =================
-POPUP CHI TIẾT GÀ
+CHI TIẾT GÀ
 ================= */
 
 
@@ -362,7 +413,6 @@ z-index:100;
 
 
 
-
 .detailBox h2{
 
 color:#ff9800;
@@ -384,10 +434,10 @@ border-radius:20px;
 padding:15px;
 
 
-margin-bottom:15px;
-
-
 line-height:1.8;
+
+
+margin-bottom:10px;
 
 
 }
@@ -415,33 +465,24 @@ width:85%;
 
 
 
-
-
 /* =================
-LỊCH SỬ
+TÀI KHOẢN
 ================= */
 
 
 #history{
 
-
-background:#fff;
-
+background:white;
 
 border-radius:15px;
 
-
 padding:10px;
-
 
 min-height:80px;
 
-
 text-align:left;
 
-
 font-size:14px;
-
 
 }
 
