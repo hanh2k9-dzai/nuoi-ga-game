@@ -20,8 +20,8 @@
 <div class="game">
 
 
+<!-- ================= TRANG NHÀ ================= -->
 
-<!-- ================= NHÀ ================= -->
 
 <section id="homePage" class="page active">
 
@@ -29,13 +29,11 @@
 <h1>🐔 Chicken Farm</h1>
 
 
-
 <div id="mainChicken">
 
 🥚
 
 </div>
-
 
 
 <h2 id="mainStatus">
@@ -108,22 +106,99 @@ Trứng đang nở...
 </div>
 
 
-
 </div>
 
 
 
 
 
+<h3>
+
+🍚 Cho ăn nhanh
+
+</h3>
+
+
+
+<div class="quickFeed">
+
+
+<button onclick="feedChicken('normal')">
+
+🌽 Cám thường
+
+<br>
+
+x<span id="feedNormal">0</span>
+
+</button>
+
+
+
+
+<button onclick="feedChicken('super')">
+
+✨ Cám siêu cấp
+
+<br>
+
+x<span id="feedSuper">0</span>
+
+</button>
+
+
+
+<button onclick="feedChicken('weight')">
+
+🐷 Cám tăng trọng
+
+<br>
+
+x<span id="feedWeight">0</span>
+
+</button>
+
+
+
+<button onclick="feedChicken('grow')">
+
+⚡ Cám siêu tăng trưởng
+
+<br>
+
+x<span id="feedGrow">0</span>
+
+</button>
+
+
+
+<button onclick="feedChicken('vip')">
+
+🌟 Cám VIP
+
+<br>
+
+x<span id="feedVip">0</span>
+
+</button>
+
+
+
+</div>
+
+
+
+
 <p>
 
-🐔 Gà đang chọn:
+🐔 Đang chọn:
 
 <span id="selectedChicken">
 
 Chưa chọn
 
 </span>
+
 
 </p>
 
@@ -166,6 +241,7 @@ Miễn phí
 
 
 
+
 <button onclick="openCoop('super')">
 
 🔥 Chuồng siêu cấp
@@ -179,6 +255,7 @@ Miễn phí
 5 slot
 
 </button>
+
 
 
 
@@ -200,10 +277,10 @@ Miễn phí
 
 
 
+
 <div id="coopAction">
 
 </div>
-
 
 
 
@@ -238,7 +315,7 @@ Miễn phí
 <section id="chickenStoragePage" class="page">
 
 
-<h2>🐔 Kho gà</h2>
+<h2>🐣 Kho gà</h2>
 
 
 
@@ -251,7 +328,6 @@ Gà chưa thả vào chuồng
 
 
 <div id="chickenStorage">
-
 
 </div>
 
@@ -267,7 +343,7 @@ Gà chưa thả vào chuồng
 
 
 
-<!-- ================= CHI TIẾT GÀ ================= -->
+<!-- ================= POPUP CHI TIẾT GÀ ================= -->
 
 
 <div id="chickenDetail" class="detailBox">
@@ -288,6 +364,7 @@ Gà chưa thả vào chuồng
 
 
 
+
 <button onclick="toggleFeedMenu()">
 
 🍚 Cho ăn ▼
@@ -298,6 +375,7 @@ Gà chưa thả vào chuồng
 
 
 <div id="feedMenu">
+
 
 
 <button onclick="feedDetailChicken('normal')">
@@ -383,6 +461,7 @@ x<span id="detailFeedVip">0</span>
 </button>
 
 
+
 </div>
 
 
@@ -438,6 +517,7 @@ Bán 25 xu
 
 
 
+
 <p>
 
 ✨ Trứng siêu cấp:
@@ -456,6 +536,7 @@ Bán 50 xu
 
 
 
+
 <p>
 
 🟡 Trứng vàng:
@@ -470,6 +551,7 @@ Bán 50 xu
 Bán 1000 xu
 
 </button>
+
 
 
 
@@ -528,7 +610,6 @@ Bán 3500 xu
 
 
 
-
 <button onclick="buyChicken('super')">
 
 🔥 Gà siêu cấp
@@ -542,7 +623,6 @@ Bán 3500 xu
 
 
 
-
 <button onclick="buyChicken('gold')">
 
 🟡 Gà vàng
@@ -552,7 +632,6 @@ Bán 3500 xu
 35000 VNĐ
 
 </button>
-
 
 
 
@@ -847,6 +926,7 @@ Player
 
 
 
+
 <h3>
 
 📜 Lịch sử giao dịch
@@ -958,13 +1038,12 @@ Chưa có giao dịch
 
 
 
-
-
 </div>
 
 
 
 <script src="game.js"></script>
+
 
 
 </body>
