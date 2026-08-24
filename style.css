@@ -5,6 +5,7 @@ box-sizing:border-box;
 }
 
 
+
 body{
 
 margin:0;
@@ -16,6 +17,7 @@ background:#bdefff;
 padding-bottom:100px;
 
 }
+
 
 
 
@@ -38,7 +40,6 @@ text-align:center;
 
 
 
-
 .page{
 
 display:none;
@@ -52,6 +53,7 @@ display:none;
 display:block;
 
 }
+
 
 
 
@@ -87,7 +89,11 @@ color:#777;
 
 
 
-/* GÀ CHÍNH */
+
+/* =================
+GÀ CHÍNH
+================= */
+
 
 #mainChicken{
 
@@ -107,8 +113,6 @@ font-size:22px;
 
 
 
-
-
 #hatchTime{
 
 font-size:20px;
@@ -124,7 +128,10 @@ margin:10px;
 
 
 
-/* THỐNG KÊ */
+
+/* =================
+THỐNG KÊ
+================= */
 
 
 .stats{
@@ -151,8 +158,6 @@ padding:10px;
 
 min-width:90px;
 
-font-size:15px;
-
 }
 
 
@@ -160,7 +165,10 @@ font-size:15px;
 
 
 
-/* NÚT */
+
+/* =================
+BUTTON
+================= */
 
 
 button{
@@ -194,6 +202,9 @@ opacity:0.8;
 
 
 
+
+
+
 .feedButtons{
 
 display:flex;
@@ -209,7 +220,10 @@ justify-content:center;
 
 
 
-/* BOX */
+
+/* =================
+BOX
+================= */
 
 
 .box{
@@ -229,7 +243,11 @@ margin:15px 0;
 
 
 
-/* CHUỒNG */
+
+
+/* =================
+CHUỒNG
+================= */
 
 
 .slots{
@@ -248,12 +266,11 @@ margin-top:20px;
 
 
 
-
 .slot{
 
 width:110px;
 
-min-height:140px;
+min-height:150px;
 
 background:#fff0b0;
 
@@ -289,7 +306,101 @@ font-size:45px;
 
 
 
-/* SHOP */
+
+/* =================
+POPUP CHI TIẾT GÀ
+================= */
+
+
+.detailBox{
+
+
+display:none;
+
+
+position:fixed;
+
+
+top:50%;
+
+
+left:50%;
+
+
+transform:translate(-50%,-50%);
+
+
+
+width:90%;
+
+
+max-width:380px;
+
+
+
+background:white;
+
+
+
+padding:20px;
+
+
+
+border-radius:30px;
+
+
+
+box-shadow:0 5px 20px #777;
+
+
+
+z-index:100;
+
+
+
+}
+
+
+
+
+.detailBox h2{
+
+color:#ff9800;
+
+}
+
+
+
+
+#detailContent{
+
+
+background:#fff5c7;
+
+
+border-radius:20px;
+
+
+padding:15px;
+
+
+margin-bottom:15px;
+
+
+line-height:1.8;
+
+
+}
+
+
+
+
+
+
+
+/* =================
+SHOP
+================= */
 
 
 #shopPage button,
@@ -305,36 +416,32 @@ width:85%;
 
 
 
-/* KHO */
 
-
-#storagePage button{
-
-width:80%;
-
-}
-
-
-
-
-
-
-/* TÀI KHOẢN */
+/* =================
+LỊCH SỬ
+================= */
 
 
 #history{
 
-background:white;
+
+background:#fff;
+
 
 border-radius:15px;
 
+
 padding:10px;
+
 
 min-height:80px;
 
+
 text-align:left;
 
+
 font-size:14px;
+
 
 }
 
@@ -344,43 +451,61 @@ font-size:14px;
 
 
 
-/* MENU DƯỚI */
+
+/* =================
+MENU
+================= */
 
 
 .menu{
 
+
 position:fixed;
+
 
 bottom:0;
 
+
 left:50%;
+
 
 transform:translateX(-50%);
 
 
+
 width:100%;
 
+
 max-width:420px;
+
 
 
 background:white;
 
 
+
 display:flex;
 
+
+
 justify-content:space-around;
+
 
 
 padding:8px 3px;
 
 
+
 border-radius:25px 25px 0 0;
+
 
 
 box-shadow:0 -3px 10px #ccc;
 
 
+
 z-index:99;
+
 
 }
 
@@ -390,20 +515,29 @@ z-index:99;
 
 .menu button{
 
+
 background:#ffe082;
+
 
 color:#333;
 
+
 font-size:20px;
+
 
 padding:8px;
 
+
 margin:0;
+
 
 width:45px;
 
+
 height:45px;
 
+
 border-radius:15px;
+
 
 }
