@@ -14,10 +14,9 @@ font-family:Arial,sans-serif;
 
 background:#bdefff;
 
-padding-bottom:90px;
+padding-bottom:100px;
 
 }
-
 
 
 
@@ -61,9 +60,9 @@ display:block;
 
 h1{
 
-color:#ff9900;
-
 font-size:40px;
+
+color:#ff9900;
 
 }
 
@@ -77,6 +76,18 @@ color:#555;
 
 
 
+h3{
+
+color:#777;
+
+}
+
+
+
+
+
+/* GÀ CHÍNH */
+
 
 #mainChicken{
 
@@ -89,6 +100,24 @@ margin:20px 0;
 
 
 
+#hatchTime{
+
+font-size:22px;
+
+margin:15px;
+
+color:#777;
+
+}
+
+
+
+
+
+
+
+/* THÔNG TIN */
+
 
 .stats{
 
@@ -100,7 +129,7 @@ justify-content:center;
 
 gap:10px;
 
-margin-bottom:20px;
+margin:15px 0;
 
 }
 
@@ -115,11 +144,12 @@ padding:12px;
 
 border-radius:20px;
 
-min-width:85px;
+min-width:90px;
 
-font-size:18px;
+font-size:16px;
 
 }
+
 
 
 
@@ -141,6 +171,11 @@ margin:15px 0;
 
 
 
+
+
+/* NÚT */
+
+
 .buttons{
 
 display:flex;
@@ -156,7 +191,6 @@ gap:8px;
 
 
 
-
 button{
 
 border:none;
@@ -165,7 +199,7 @@ background:#ffae00;
 
 color:white;
 
-padding:12px 15px;
+padding:12px;
 
 border-radius:25px;
 
@@ -190,10 +224,9 @@ opacity:0.8;
 
 
 
-/* =================
-   CHUỒNG
-================= */
 
+
+/* CHUỒNG */
 
 
 .slots{
@@ -212,7 +245,6 @@ margin:20px 0;
 
 
 
-
 .slot{
 
 width:110px;
@@ -225,13 +257,11 @@ border-radius:20px;
 
 padding:10px;
 
-font-size:14px;
-
 cursor:pointer;
 
+font-size:14px;
+
 }
-
-
 
 
 
@@ -243,13 +273,9 @@ transform:scale(1.05);
 
 
 
-
-
 .emoji{
 
 font-size:45px;
-
-margin-bottom:5px;
 
 }
 
@@ -257,15 +283,12 @@ margin-bottom:5px;
 
 
 
+/* SHOP */
 
 
-/* =================
-   SHOP
-================= */
+#shopPage button,
 
-
-
-#shopPage button{
+#feedShopPage button{
 
 width:85%;
 
@@ -275,10 +298,26 @@ width:85%;
 
 
 
-/* =================
-   MENU
-================= */
+/* TÀI KHOẢN */
 
+
+#history{
+
+background:white;
+
+border-radius:15px;
+
+padding:10px;
+
+min-height:60px;
+
+}
+
+
+
+
+
+/* MENU */
 
 
 .menu{
@@ -330,7 +369,7 @@ color:#333;
 
 font-size:12px;
 
-padding:8px 5px;
+padding:8px 4px;
 
 margin:0;
 
