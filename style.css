@@ -1,3 +1,9 @@
+/* ==================================
+   CHICKEN FARM
+   STYLE.CSS v0.7.3
+================================== */
+
+
 *{
 
 box-sizing:border-box;
@@ -14,9 +20,10 @@ font-family:Arial,sans-serif;
 
 background:#bdefff;
 
-padding-bottom:100px;
+padding-bottom:90px;
 
 }
+
 
 
 
@@ -41,6 +48,11 @@ text-align:center;
 
 
 
+/* ===============================
+PAGE
+=============================== */
+
+
 .page{
 
 display:none;
@@ -54,7 +66,6 @@ display:none;
 display:block;
 
 }
-
 
 
 
@@ -92,16 +103,17 @@ color:#777;
 
 
 
-/* =================
+
+/* ===============================
 GÀ CHÍNH
-================= */
+=============================== */
 
 
 #mainChicken{
 
 font-size:120px;
 
-margin:20px 0;
+margin:20px;
 
 }
 
@@ -117,11 +129,9 @@ font-size:22px;
 
 #hatchTime{
 
-font-size:20px;
+font-size:18px;
 
 color:#777;
-
-margin:10px;
 
 }
 
@@ -131,9 +141,9 @@ margin:10px;
 
 
 
-/* =================
-THÔNG TIN
-================= */
+/* ===============================
+STATS
+=============================== */
 
 
 .stats{
@@ -144,7 +154,7 @@ flex-wrap:wrap;
 
 justify-content:center;
 
-gap:10px;
+gap:8px;
 
 }
 
@@ -160,7 +170,7 @@ padding:10px;
 
 min-width:90px;
 
-font-size:15px;
+font-size:14px;
 
 }
 
@@ -170,9 +180,11 @@ font-size:15px;
 
 
 
-/* =================
+
+
+/* ===============================
 BUTTON
-================= */
+=============================== */
 
 
 button{
@@ -185,9 +197,9 @@ color:white;
 
 padding:12px;
 
-border-radius:20px;
-
 margin:5px;
+
+border-radius:20px;
 
 font-size:15px;
 
@@ -199,7 +211,7 @@ cursor:pointer;
 
 button:hover{
 
-opacity:0.8;
+opacity:.85;
 
 }
 
@@ -208,12 +220,15 @@ opacity:0.8;
 
 
 
-/* =================
-CÁM
-================= */
 
 
-.feedButtons{
+
+/* ===============================
+CÁM NHANH
+=============================== */
+
+
+.quickFeed{
 
 display:flex;
 
@@ -225,49 +240,9 @@ justify-content:center;
 
 
 
+.quickFeed button{
 
-.feedMenu{
-
-display:none;
-
-background:#fff5c7;
-
-border-radius:20px;
-
-padding:10px;
-
-margin:10px 0;
-
-}
-
-
-
-
-.feedMenu button{
-
-width:90%;
-
-}
-
-
-
-
-
-
-/* =================
-BOX
-================= */
-
-
-.box{
-
-background:#fff5c7;
-
-border-radius:25px;
-
-padding:15px;
-
-margin:15px 0;
+width:45%;
 
 }
 
@@ -277,24 +252,14 @@ margin:15px 0;
 
 
 
-/* =================
+
+
+/* ===============================
 CHUỒNG
-================= */
+=============================== */
 
 
-.coopButtons{
-
-display:flex;
-
-flex-wrap:wrap;
-
-justify-content:center;
-
-}
-
-
-
-.coopButtons button{
+#coopPage button{
 
 width:90%;
 
@@ -312,9 +277,11 @@ justify-content:center;
 
 gap:10px;
 
-margin-top:20px;
+margin-top:15px;
 
 }
+
+
 
 
 
@@ -322,7 +289,7 @@ margin-top:20px;
 
 width:115px;
 
-min-height:160px;
+min-height:150px;
 
 background:#fff0b0;
 
@@ -330,9 +297,9 @@ border-radius:20px;
 
 padding:10px;
 
-cursor:pointer;
-
 font-size:14px;
+
+cursor:pointer;
 
 }
 
@@ -340,9 +307,11 @@ font-size:14px;
 
 .slot:hover{
 
-transform:scale(1.05);
+transform:scale(1.04);
 
 }
+
+
 
 
 
@@ -358,9 +327,53 @@ font-size:45px;
 
 
 
-/* =================
-CHI TIẾT GÀ
-================= */
+
+
+/* ===============================
+KHO GÀ
+=============================== */
+
+
+#chickenStorage{
+
+display:flex;
+
+flex-wrap:wrap;
+
+justify-content:center;
+
+gap:10px;
+
+}
+
+
+
+
+
+
+.storageChicken{
+
+background:#fff5c7;
+
+border-radius:20px;
+
+padding:10px;
+
+width:120px;
+
+}
+
+
+
+
+
+
+
+
+
+/* ===============================
+POPUP CHI TIẾT GÀ
+=============================== */
 
 
 .detailBox{
@@ -392,53 +405,36 @@ max-width:380px;
 background:white;
 
 
-
 padding:20px;
 
 
-
 border-radius:30px;
-
 
 
 box-shadow:0 5px 20px #777;
 
 
 
-z-index:100;
+z-index:200;
 
 
 
 }
 
 
-
-.detailBox h2{
-
-color:#ff9800;
-
-}
 
 
 
 
 #detailContent{
 
-
 background:#fff5c7;
-
 
 border-radius:20px;
 
-
 padding:15px;
 
-
-line-height:1.8;
-
-
-margin-bottom:10px;
-
+line-height:1.7;
 
 }
 
@@ -448,9 +444,86 @@ margin-bottom:10px;
 
 
 
-/* =================
+
+
+/* ===============================
+MENU CÁM
+=============================== */
+
+
+#feedMenu{
+
+
+display:none;
+
+
+max-height:220px;
+
+
+overflow-y:auto;
+
+
+
+background:#fff5c7;
+
+
+
+border-radius:20px;
+
+
+
+padding:10px;
+
+
+
+}
+
+
+
+
+
+#feedMenu button{
+
+width:90%;
+
+}
+
+
+
+
+
+
+
+
+
+/* ===============================
+BOX
+=============================== */
+
+
+.box{
+
+background:#fff5c7;
+
+border-radius:25px;
+
+padding:15px;
+
+margin:10px 0;
+
+}
+
+
+
+
+
+
+
+
+
+/* ===============================
 SHOP
-================= */
+=============================== */
 
 
 #shopPage button,
@@ -465,9 +538,13 @@ width:85%;
 
 
 
-/* =================
-TÀI KHOẢN
-================= */
+
+
+
+
+/* ===============================
+LỊCH SỬ
+=============================== */
 
 
 #history{
@@ -479,6 +556,10 @@ border-radius:15px;
 padding:10px;
 
 min-height:80px;
+
+max-height:200px;
+
+overflow:auto;
 
 text-align:left;
 
@@ -493,9 +574,10 @@ font-size:14px;
 
 
 
-/* =================
-MENU
-================= */
+
+/* ===============================
+MENU DƯỚI
+=============================== */
 
 
 .menu{
@@ -533,7 +615,7 @@ justify-content:space-around;
 
 
 
-padding:8px 3px;
+padding:8px;
 
 
 
@@ -545,7 +627,9 @@ box-shadow:0 -3px 10px #ccc;
 
 
 
-z-index:99;
+z-index:100;
+
+
 
 
 }
@@ -563,22 +647,22 @@ background:#ffe082;
 color:#333;
 
 
+width:40px;
+
+
+height:40px;
+
+
+padding:5px;
+
+
 font-size:20px;
 
 
-padding:8px;
+border-radius:15px;
 
 
 margin:0;
-
-
-width:45px;
-
-
-height:45px;
-
-
-border-radius:15px;
 
 
 }
