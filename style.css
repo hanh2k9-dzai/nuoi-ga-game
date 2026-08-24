@@ -1,22 +1,10 @@
 body{
 
-    margin:0;
+margin:0;
 
-    height:100vh;
+font-family:Arial;
 
-    background:
-    linear-gradient(
-        #87ceeb,
-        #a8e063
-    );
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    font-family:Arial;
+background:linear-gradient(#bdefff,#b5ef72);
 
 }
 
@@ -24,23 +12,19 @@ body{
 
 .game{
 
+max-width:420px;
 
-    width:350px;
+margin:auto;
 
-    height:600px;
+background:white;
 
+min-height:100vh;
 
-    background:white;
+padding:20px;
 
+border-radius:40px;
 
-    border-radius:30px;
-
-
-    text-align:center;
-
-
-    padding:30px;
-
+text-align:center;
 
 }
 
@@ -48,7 +32,9 @@ body{
 
 h1{
 
-    color:#ff9800;
+color:#ff9900;
+
+font-size:45px;
 
 }
 
@@ -56,28 +42,17 @@ h1{
 
 #chicken{
 
+font-size:120px;
 
-    font-size:120px;
-
-
-    margin:50px;
-
-
-    animation:bounce 1s infinite;
+margin:30px;
 
 }
 
 
 
-@keyframes bounce{
+#stage{
 
-
-    50%{
-
-        transform:translateY(-15px);
-
-    }
-
+font-size:28px;
 
 }
 
@@ -85,18 +60,67 @@ h1{
 
 .stats{
 
+display:flex;
 
-    background:#fff3cd;
+flex-wrap:wrap;
+
+justify-content:center;
+
+gap:10px;
+
+background:#fff2bd;
+
+padding:20px;
+
+border-radius:30px;
+
+}
 
 
-    border-radius:20px;
+
+.status{
+
+background:white;
+
+padding:12px;
+
+border-radius:20px;
+
+font-size:20px;
+
+min-width:90px;
+
+}
 
 
-    padding:15px;
+
+#timeBox{
+
+margin:15px;
+
+font-size:22px;
+
+}
 
 
-    font-size:20px;
 
+.feed-box{
+
+margin-top:20px;
+
+}
+
+
+
+.buttons{
+
+display:flex;
+
+flex-wrap:wrap;
+
+gap:10px;
+
+justify-content:center;
 
 }
 
@@ -104,29 +128,24 @@ h1{
 
 button{
 
+background:#ff9900;
 
-    margin-top:40px;
+color:white;
 
+border:none;
 
-    width:220px;
+border-radius:30px;
 
+padding:15px 20px;
 
-    height:60px;
+font-size:18px;
 
-
-    border:none;
-
-
-    border-radius:30px;
-
-
-    background:#ff9800;
+}
 
 
-    color:white;
 
+.actions{
 
-    font-size:25px;
-
+margin-top:20px;
 
 }
