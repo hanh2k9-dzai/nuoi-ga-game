@@ -1,14 +1,12 @@
 let chicken = {
 
-    stage: "egg",
+    stage:"egg",
 
-    level: 0,
+    exp:0,
 
-    exp: 0,
+    food:100,
 
-    food: 100,
-
-    coin: 0,
+    coin:0,
 
     hatchTime: Date.now() + 10000
 
@@ -19,93 +17,98 @@ let chicken = {
 function updateGame(){
 
 
-    let icon = "🥚";
-    let stageName = "Trứng";
-    let level = 0;
+    let icon="🥚";
+    let name="Trứng";
+    let level=0;
 
 
 
-    if(chicken.stage == "newborn"){
+    if(chicken.stage=="newborn"){
 
-        icon = "🐣";
-        stageName = "Gà mới nở";
-        level = 3;
-
-    }
-
-
-
-    if(chicken.stage == "baby"){
-
-        icon = "🐥";
-        stageName = "Gà con";
-        level = 5;
+        icon="🐣";
+        name="Gà mới nở";
+        level=3;
 
     }
 
 
 
-    if(chicken.stage == "adult"){
+    if(chicken.stage=="baby"){
 
-        icon = "🐓";
-        stageName = "Gà lớn";
-        level = 10;
+        icon="🐥";
+        name="Gà con";
+        level=5;
+
+    }
+
+
+
+    if(chicken.stage=="adult"){
+
+        icon="🐓";
+        name="Gà lớn";
+        level=10;
 
     }
 
 
 
-    document.getElementById("chicken").innerHTML = icon;
+    document.getElementById("chicken").innerHTML=icon;
 
-    document.getElementById("stage").innerHTML = stageName;
+    document.getElementById("stage").innerHTML=name;
 
-    document.getElementById("level").innerHTML = level;
+    document.getElementById("level").innerHTML=level;
 
-    document.getElementById("exp").innerHTML = chicken.exp;
+    document.getElementById("exp").innerHTML=chicken.exp;
 
-    document.getElementById("food").innerHTML = chicken.food;
+    document.getElementById("food").innerHTML=chicken.food;
 
-    document.getElementById("coin").innerHTML = chicken.coin;
+    document.getElementById("coin").innerHTML=chicken.coin;
 
 
 
-    // Nếu không còn là trứng thì xóa thời gian
+    // Ẩn thời gian khi đã nở
 
-    if(chicken.stage != "egg"){
+    if(chicken.stage!="egg"){
 
-        document.getElementById("time").innerHTML = "";
+        document.getElementById("timeBox").style.display="none";
 
     }
+
 
 }
+
 
 
 
 function checkEgg(){
 
 
-    if(chicken.stage == "egg"){
+    if(chicken.stage=="egg"){
 
 
-        let time = Math.ceil(
-            (chicken.hatchTime - Date.now()) / 1000
+        let time=Math.ceil(
+            (chicken.hatchTime-Date.now())/1000
         );
 
 
 
-        if(time > 0){
+        if(time>0){
 
-            document.getElementById("time").innerHTML =
-            "🥚 Còn " + time + "s";
+            document.getElementById("time").innerHTML=
+            "🥚 Còn "+time+"s";
 
         }
 
 
 
-        if(time <= 0){
+        if(time<=0){
 
 
-            chicken.stage = "newborn";
+            chicken.stage="newborn";
+
+
+            document.getElementById("timeBox").style.display="none";
 
 
             alert("🎉 Trứng đã nở thành 🐣");
@@ -117,8 +120,8 @@ function checkEgg(){
     }
 
 
-    updateGame();
 
+    updateGame();
 
 }
 
@@ -128,7 +131,7 @@ function checkEgg(){
 function feed(){
 
 
-    if(chicken.stage == "egg"){
+    if(chicken.stage=="egg"){
 
         alert("🥚 Trứng chưa nở!");
 
@@ -138,48 +141,46 @@ function feed(){
 
 
 
-    chicken.food += 5;
+    chicken.exp +=20;
 
-    chicken.exp += 20;
+    chicken.coin +=1;
 
-    chicken.coin += 1;
-
-
-
-    if(chicken.food > 100){
-
-        chicken.food = 100;
-
-    }
+    chicken.food +=5;
 
 
 
-    if(chicken.stage == "newborn"
-    && chicken.exp >= 100){
+    if(chicken.food>100){
 
-
-        chicken.stage = "baby";
-
-        chicken.exp = 0;
-
-
-        alert("🎉 🐣 đã thành 🐥");
-
+        chicken.food=100;
 
     }
 
 
 
-    else if(chicken.stage == "baby"
-    && chicken.exp >= 100){
+    if(chicken.stage=="newborn" && chicken.exp>=100){
 
 
-        chicken.stage = "adult";
+        chicken.stage="baby";
 
-        chicken.exp = 0;
+        chicken.exp=0;
 
 
-        alert("🎉 🐥 đã thành 🐓");
+        alert("🎉 🐣 thành 🐥");
+
+
+    }
+
+
+
+    else if(chicken.stage=="baby" && chicken.exp>=100){
+
+
+        chicken.stage="adult";
+
+        chicken.exp=0;
+
+
+        alert("🎉 🐥 thành 🐓");
 
 
     }
@@ -188,8 +189,8 @@ function feed(){
 
     updateGame();
 
-}
 
+}
 
 
 
