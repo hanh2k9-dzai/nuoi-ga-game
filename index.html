@@ -19,6 +19,11 @@
 <div class="game">
 
 
+<!-- ================= NHÀ ================= -->
+
+<div id="homePage" class="page active">
+
+
 <h1>🐔 Nuôi Gà</h1>
 
 
@@ -57,7 +62,7 @@ Trứng
 
 
 <div class="status">
-🎂 <span id="age">0</span>/<span id="maxAge">7</span>
+🎂 <span id="age">0</span>/7
 </div>
 
 
@@ -66,9 +71,12 @@ Trứng
 
 
 <div id="timeBox">
-⏳ <span id="time">Còn 10s</span>
-</div>
 
+⏳ <span id="time">
+Còn 10s
+</span>
+
+</div>
 
 
 
@@ -116,54 +124,353 @@ Trứng
 </button>
 
 
-<button id="sellButton" onclick="sellChicken()" style="display:none;">
+
+<button id="sellButton" onclick="sellChicken()" style="display:none">
+
 🐔 Bán gà
+
 </button>
 
 
 </div>
 
 
+</div>
 
+
+
+
+
+
+
+<!-- ================= CHUỒNG ================= -->
+
+
+<div id="coopPage" class="page">
+
+
+<h2>🏠 Chuồng gà</h2>
+
+
+<div class="box">
+
+
+<p>🐔 Gà hiện tại</p>
+
+
+<p id="coopInfo">
+
+Đang tải...
+
+</p>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- ================= KHO ================= -->
+
+
+<div id="eggPage" class="page">
+
+
+<h2>🥚 Kho</h2>
+
+
+
+<div class="box">
+
+
+<p>
+🥚 Trứng thường:
+<span id="storageEgg">0</span>
+</p>
+
+
+
+<p>
+🟡 Trứng vàng:
+0
+</p>
+
+
+
+<p>
+💎 Trứng kim cương:
+0
+</p>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- ================= SHOP ================= -->
+
+
+<div id="shopPage" class="page">
+
+
+<h2>🏪 Shop</h2>
+
+
+
+<div class="box">
+
+
+<button onclick="buyEgg()">
+
+🥚 Trứng thường
+
+<br>
+
+250 xu
+
+</button>
+
+
+
+<br>
+
+
+
+<button>
+
+🥚 Trứng siêu cấp
+
+<br>
+
+3000 xu
+
+</button>
+
+
+
+<br>
+
+
+
+<button>
+
+🍚 Cám
+
+</button>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- ================= NHIỆM VỤ ================= -->
+
+
+<div id="questPage" class="page">
+
+
+<h2>🎯 Nhiệm vụ</h2>
+
+
+
+<div class="box">
+
+
+<p>
+🎁 Nhận thưởng random
+</p>
+
+
+<p>
+500 - 5000 xu
+</p>
+
+
+
+<button onclick="questReward()">
+
+Nhận thưởng
+
+</button>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- ================= TÀI KHOẢN ================= -->
+
+
+<div id="accountPage" class="page">
+
+
+<h2>👤 Tài khoản</h2>
+
+
+
+<div class="box">
+
+
+<p>
+🆔 ID:
+<span id="userID">
+10001
+</span>
+
+</p>
+
+
+
+<p>
+👤 Tên:
+<span id="username">
+ChickenPlayer
+</span>
+
+</p>
+
+
+
+<p>
+🪙 Ví xu:
+<span id="wallet">
+0
+</span>
+
+</p>
+
+
+
+<button onclick="withdrawDemo()">
+
+💸 Rút tiền DEMO
+
+</button>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- ================= MENU ================= -->
 
 
 <div class="menu">
 
 
-<button>
+<button onclick="openPage('homePage')">
+
 🏠
 <br>
 Nhà
+
 </button>
 
 
-<button>
+
+<button onclick="openPage('coopPage')">
+
+🐔
+<br>
+Chuồng
+
+</button>
+
+
+
+<button onclick="openPage('eggPage')">
+
 🥚
 <br>
 Kho
+
 </button>
 
 
-<button>
+
+<button onclick="openPage('shopPage')">
+
 🏪
 <br>
 Shop
+
 </button>
 
 
-<button>
+
+<button onclick="openPage('questPage')">
+
 🎯
 <br>
 Nhiệm vụ
+
 </button>
 
 
+
+<button onclick="openPage('accountPage')">
+
+👤
+<br>
+TK
+
+</button>
+
+
+
 </div>
 
 
 
 
 </div>
+
 
 
 <script src="game.js"></script>
