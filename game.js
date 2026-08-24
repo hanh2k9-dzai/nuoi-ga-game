@@ -57,25 +57,25 @@ function updateGame(){
 
     document.getElementById("chicken").innerHTML = icon;
 
-
     document.getElementById("stage").innerHTML = stageName;
-
 
     document.getElementById("level").innerHTML = level;
 
+    document.getElementById("exp").innerHTML = chicken.exp;
 
-    document.getElementById("exp").innerHTML =
-    chicken.exp;
+    document.getElementById("food").innerHTML = chicken.food;
 
-
-    document.getElementById("food").innerHTML =
-    chicken.food;
+    document.getElementById("coin").innerHTML = chicken.coin;
 
 
-    document.getElementById("coin").innerHTML =
-    chicken.coin;
 
+    // Nếu không còn là trứng thì xóa thời gian
 
+    if(chicken.stage != "egg"){
+
+        document.getElementById("time").innerHTML = "";
+
+    }
 
 }
 
@@ -108,10 +108,6 @@ function checkEgg(){
             chicken.stage = "newborn";
 
 
-            document.getElementById("time").innerHTML =
-            "";
-
-
             alert("🎉 Trứng đã nở thành 🐣");
 
 
@@ -119,7 +115,6 @@ function checkEgg(){
 
 
     }
-
 
 
     updateGame();
@@ -134,7 +129,6 @@ function feed(){
 
 
     if(chicken.stage == "egg"){
-
 
         alert("🥚 Trứng chưa nở!");
 
@@ -169,7 +163,7 @@ function feed(){
         chicken.exp = 0;
 
 
-        alert("🎉 🐣 đã lớn thành 🐥");
+        alert("🎉 🐣 đã thành 🐥");
 
 
     }
@@ -185,7 +179,7 @@ function feed(){
         chicken.exp = 0;
 
 
-        alert("🎉 🐥 đã lớn thành 🐓");
+        alert("🎉 🐥 đã thành 🐓");
 
 
     }
@@ -194,8 +188,8 @@ function feed(){
 
     updateGame();
 
-
 }
+
 
 
 
