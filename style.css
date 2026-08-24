@@ -4,10 +4,9 @@ margin:0;
 
 font-family:Arial;
 
-background:linear-gradient(#bdefff,#b5ef72);
+background:#bdefff;
 
 }
-
 
 
 .game{
@@ -16,25 +15,13 @@ max-width:420px;
 
 margin:auto;
 
-background:white;
-
 min-height:100vh;
 
-padding:20px;
-
-border-radius:40px;
+background:white;
 
 text-align:center;
 
-}
-
-
-
-h1{
-
-color:#ff9900;
-
-font-size:45px;
+padding:20px;
 
 }
 
@@ -44,15 +31,7 @@ font-size:45px;
 
 font-size:120px;
 
-margin:30px;
-
-}
-
-
-
-#stage{
-
-font-size:28px;
+margin:20px;
 
 }
 
@@ -68,45 +47,41 @@ justify-content:center;
 
 gap:10px;
 
-background:#fff2bd;
-
-padding:20px;
-
-border-radius:30px;
-
 }
 
 
 
 .status{
 
-background:white;
+background:#fff0b0;
 
 padding:12px;
 
 border-radius:20px;
 
+min-width:80px;
+
 font-size:20px;
 
-min-width:90px;
-
 }
 
 
 
-#timeBox{
+button{
 
-margin:15px;
+border:none;
 
-font-size:22px;
+border-radius:20px;
 
-}
+padding:12px;
 
+margin:5px;
 
+background:#ffae00;
 
-.feed-box{
+color:white;
 
-margin-top:20px;
+font-size:16px;
 
 }
 
@@ -118,27 +93,7 @@ display:flex;
 
 flex-wrap:wrap;
 
-gap:10px;
-
 justify-content:center;
-
-}
-
-
-
-button{
-
-background:#ff9900;
-
-color:white;
-
-border:none;
-
-border-radius:30px;
-
-padding:15px 20px;
-
-font-size:18px;
 
 }
 
@@ -147,5 +102,45 @@ font-size:18px;
 .actions{
 
 margin-top:20px;
+
+}
+
+
+
+.menu{
+
+position:fixed;
+
+bottom:0;
+
+left:50%;
+
+transform:translateX(-50%);
+
+max-width:420px;
+
+width:100%;
+
+display:flex;
+
+justify-content:space-around;
+
+background:white;
+
+padding:10px 0;
+
+border-radius:25px 25px 0 0;
+
+}
+
+
+
+.menu button{
+
+background:#ffe082;
+
+color:#333;
+
+font-size:14px;
 
 }
