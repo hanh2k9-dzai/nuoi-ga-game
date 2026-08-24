@@ -1,6 +1,6 @@
 /* ==================================
    CHICKEN FARM
-   STYLE.CSS v0.7.3
+   STYLE.CSS v0.7.6 FULL UPDATE
 ================================== */
 
 
@@ -16,15 +16,13 @@ body{
 
 margin:0;
 
-font-family:Arial,sans-serif;
+padding-bottom:90px;
 
 background:#bdefff;
 
-padding-bottom:90px;
+font-family:Arial,sans-serif;
 
 }
-
-
 
 
 
@@ -32,9 +30,9 @@ padding-bottom:90px;
 
 max-width:420px;
 
-min-height:100vh;
-
 margin:auto;
+
+min-height:100vh;
 
 background:white;
 
@@ -48,8 +46,10 @@ text-align:center;
 
 
 
+
+
 /* ===============================
-PAGE
+ PAGE
 =============================== */
 
 
@@ -71,13 +71,15 @@ display:block;
 
 
 
-h1{
 
-font-size:38px;
+
+
+
+h1{
 
 color:#ff9800;
 
-margin:10px;
+font-size:36px;
 
 }
 
@@ -104,8 +106,9 @@ color:#777;
 
 
 
+
 /* ===============================
-GÀ CHÍNH
+ GÀ TRANG CHỦ
 =============================== */
 
 
@@ -114,14 +117,6 @@ GÀ CHÍNH
 font-size:120px;
 
 margin:20px;
-
-}
-
-
-
-#mainStatus{
-
-font-size:22px;
 
 }
 
@@ -137,12 +132,22 @@ color:#777;
 
 
 
+#mainStatus{
+
+color:#ff9800;
+
+}
+
+
+
+
+
 
 
 
 
 /* ===============================
-STATS
+ THỐNG KÊ
 =============================== */
 
 
@@ -162,13 +167,13 @@ gap:8px;
 
 .stats div{
 
-background:#fff0b0;
-
-border-radius:20px;
+background:#fff0a8;
 
 padding:10px;
 
-min-width:90px;
+border-radius:20px;
+
+min-width:85px;
 
 font-size:14px;
 
@@ -183,35 +188,19 @@ font-size:14px;
 
 
 /* ===============================
-BUTTON
+ BOX
 =============================== */
 
 
-button{
+.box{
 
-border:none;
+background:#fff6c7;
 
-background:#ffae00;
+border-radius:25px;
 
-color:white;
+padding:15px;
 
-padding:12px;
-
-margin:5px;
-
-border-radius:20px;
-
-font-size:15px;
-
-cursor:pointer;
-
-}
-
-
-
-button:hover{
-
-opacity:.85;
+margin:10px 0;
 
 }
 
@@ -224,7 +213,46 @@ opacity:.85;
 
 
 /* ===============================
-CÁM NHANH
+ BUTTON
+=============================== */
+
+
+button{
+
+background:#ffad00;
+
+border:none;
+
+color:white;
+
+padding:12px;
+
+margin:5px;
+
+border-radius:20px;
+
+font-size:15px;
+
+}
+
+
+
+button:disabled{
+
+background:#aaa;
+
+}
+
+
+
+
+
+
+
+
+
+/* ===============================
+ CÁM
 =============================== */
 
 
@@ -255,7 +283,7 @@ width:45%;
 
 
 /* ===============================
-CHUỒNG
+ CHUỒNG
 =============================== */
 
 
@@ -267,7 +295,7 @@ width:90%;
 
 
 
-.slots{
+#coopSlots{
 
 display:flex;
 
@@ -277,41 +305,23 @@ justify-content:center;
 
 gap:10px;
 
-margin-top:15px;
-
 }
-
-
 
 
 
 .slot{
 
-width:115px;
-
-min-height:150px;
-
 background:#fff0b0;
+
+width:120px;
+
+min-height:130px;
 
 border-radius:20px;
 
 padding:10px;
 
-font-size:14px;
-
-cursor:pointer;
-
 }
-
-
-
-.slot:hover{
-
-transform:scale(1.04);
-
-}
-
-
 
 
 
@@ -330,7 +340,7 @@ font-size:45px;
 
 
 /* ===============================
-KHO GÀ
+ KHO GÀ
 =============================== */
 
 
@@ -348,18 +358,15 @@ gap:10px;
 
 
 
-
-
-
 .storageChicken{
 
 background:#fff5c7;
 
 border-radius:20px;
 
-padding:10px;
-
 width:120px;
+
+padding:10px;
 
 }
 
@@ -372,7 +379,40 @@ width:120px;
 
 
 /* ===============================
-POPUP CHI TIẾT GÀ
+ SHOP
+=============================== */
+
+
+.shopChicken{
+
+background:#fff6d0;
+
+border-radius:25px;
+
+padding:15px;
+
+margin:10px 0;
+
+}
+
+
+
+.shopChicken h3{
+
+margin:5px;
+
+}
+
+
+
+
+
+
+
+
+
+/* ===============================
+ POPUP
 =============================== */
 
 
@@ -402,6 +442,14 @@ max-width:380px;
 
 
 
+max-height:85vh;
+
+
+
+overflow-y:auto;
+
+
+
 background:white;
 
 
@@ -415,26 +463,9 @@ box-shadow:0 5px 20px #777;
 
 
 
-z-index:200;
+z-index:999;
 
 
-
-}
-
-
-
-
-
-
-#detailContent{
-
-background:#fff5c7;
-
-border-radius:20px;
-
-padding:15px;
-
-line-height:1.7;
 
 }
 
@@ -447,7 +478,51 @@ line-height:1.7;
 
 
 /* ===============================
-MENU CÁM
+ THÔNG TIN LV
+=============================== */
+
+
+#levelInfoTable{
+
+
+max-height:250px;
+
+
+overflow-y:auto;
+
+
+
+background:#fff6c7;
+
+
+border-radius:20px;
+
+
+
+padding:10px;
+
+
+
+margin-top:10px;
+
+
+
+text-align:left;
+
+
+
+}
+
+
+
+
+
+
+
+
+
+/* ===============================
+ FEED MENU
 =============================== */
 
 
@@ -457,14 +532,14 @@ MENU CÁM
 display:none;
 
 
-max-height:220px;
+max-height:250px;
 
 
 overflow-y:auto;
 
 
 
-background:#fff5c7;
+background:#fff6c7;
 
 
 
@@ -477,8 +552,6 @@ padding:10px;
 
 
 }
-
-
 
 
 
@@ -497,40 +570,13 @@ width:90%;
 
 
 /* ===============================
-BOX
+ SHOP CÁM
 =============================== */
 
-
-.box{
-
-background:#fff5c7;
-
-border-radius:25px;
-
-padding:15px;
-
-margin:10px 0;
-
-}
-
-
-
-
-
-
-
-
-
-/* ===============================
-SHOP
-=============================== */
-
-
-#shopPage button,
 
 #feedShopPage button{
 
-width:85%;
+width:90%;
 
 }
 
@@ -543,7 +589,7 @@ width:85%;
 
 
 /* ===============================
-LỊCH SỬ
+ LỊCH SỬ
 =============================== */
 
 
@@ -555,15 +601,15 @@ border-radius:15px;
 
 padding:10px;
 
-min-height:80px;
 
 max-height:200px;
 
-overflow:auto;
+
+overflow-y:auto;
+
 
 text-align:left;
 
-font-size:14px;
 
 }
 
@@ -576,7 +622,26 @@ font-size:14px;
 
 
 /* ===============================
-MENU DƯỚI
+ ADMIN NOTICE
+=============================== */
+
+
+#noticePage .box{
+
+border:2px solid #ffd54f;
+
+}
+
+
+
+
+
+
+
+
+
+/* ===============================
+ MENU DƯỚI
 =============================== */
 
 
@@ -596,10 +661,10 @@ transform:translateX(-50%);
 
 
 
-width:100%;
-
-
 max-width:420px;
+
+
+width:100%;
 
 
 
@@ -608,7 +673,6 @@ background:white;
 
 
 display:flex;
-
 
 
 justify-content:space-around;
@@ -627,8 +691,7 @@ box-shadow:0 -3px 10px #ccc;
 
 
 
-z-index:100;
-
+z-index:1000;
 
 
 
@@ -636,15 +699,7 @@ z-index:100;
 
 
 
-
-
 .menu button{
-
-
-background:#ffe082;
-
-
-color:#333;
 
 
 width:40px;
@@ -656,13 +711,16 @@ height:40px;
 padding:5px;
 
 
+margin:0;
+
+
 font-size:20px;
 
 
-border-radius:15px;
+background:#ffe082;
 
 
-margin:0;
+color:#333;
 
 
 }
