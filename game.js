@@ -1,3 +1,33 @@
+// =======================
+// CẤU HÌNH TEST
+// =======================
+
+const HATCH_TIME = 10000; // trứng nở 10s
+
+const EGG_TIME = 15000; // đẻ trứng 15s
+
+const AGE_TIME = 120000; // 2 phút = 1 ngày
+
+
+
+// =======================
+// GIÁ GAME
+// =======================
+
+const SELL_CHICKEN = 600;
+
+const SELL_EGG = 25;
+
+const BUY_EGG = 250;
+
+
+
+
+// =======================
+// DỮ LIỆU GAME
+// =======================
+
+
 let game = {
 
 
@@ -5,8 +35,11 @@ coin:0,
 
 
 eggs:{
-    normal:0
+
+normal:0
+
 },
+
 
 
 chickens:[
@@ -23,9 +56,9 @@ age:0,
 
 maxAge:7,
 
-hatchTime:Date.now()+10000,
+hatchTime:Date.now()+HATCH_TIME,
 
-eggTime:Date.now()+5000
+eggTime:Date.now()+EGG_TIME
 
 }
 
@@ -33,6 +66,22 @@ eggTime:Date.now()+5000
 
 
 };
+
+
+
+
+// Tài khoản demo
+
+let account = {
+
+id:10001,
+
+name:"ChickenPlayer",
+
+wallet:0
+
+};
+
 
 
 
@@ -48,6 +97,8 @@ return game.chickens[0];
 
 
 
+// EXP cần lên cấp
+
 function needExp(level){
 
 return 100 + ((level-1)*50);
@@ -59,18 +110,17 @@ return 100 + ((level-1)*50);
 
 
 
+
+
+// =======================
+// UPDATE GIAO DIỆN
+// =======================
+
+
 function updateGame(){
 
 
-let c=chicken();
-
-
-
-if(isNaN(c.exp)){
-
-c.exp=0;
-
-}
+let c = chicken();
 
 
 
@@ -83,33 +133,41 @@ let name="Trứng";
 if(c.level>=1 && c.level<5){
 
 icon="🐣";
+
 name="Gà mới nở";
 
 }
 
 
+
 if(c.level>=5 && c.level<10){
 
 icon="🐥";
+
 name="Gà con";
 
 }
 
 
+
 if(c.level>=10 && c.level<25){
 
 icon="🐓";
+
 name="Gà lớn";
 
 }
 
 
+
 if(c.level>=25){
 
 icon="🐔";
+
 name="Gà trưởng thành";
 
 }
+
 
 
 
@@ -123,50 +181,36 @@ document.getElementById("level").innerHTML=c.level;
 
 
 document.getElementById("exp").innerHTML=
+
 Math.floor(c.exp)+"/"+needExp(c.level);
 
 
 
 document.getElementById("coin").innerHTML=
+
 game.coin;
 
 
 
 document.getElementById("egg").innerHTML=
+
 game.eggs.normal;
 
 
 
 document.getElementById("age").innerHTML=
+
 c.age;
-
-
-
-document.getElementById("maxAge").innerHTML=
-c.maxAge;
-
-
-
-
-if(c.level==0){
-
-document.getElementById("timeBox").style.display="block";
-
-}
-else{
-
-document.getElementById("timeBox").style.display="none";
-
-}
 
 
 
 
 if(c.level>=25){
 
-document.getElementById("sellButton").style.display="block";
+document.getElementById("sellButton").style.display="inline-block";
 
 }
+
 else{
 
 document.getElementById("sellButton").style.display="none";
@@ -175,6 +219,26 @@ document.getElementById("sellButton").style.display="none";
 
 
 
+// cập nhật chuồng
+
+document.getElementById("coopInfo").innerHTML=
+
+"🐔 "+name+
+"<br>⭐ Lv "+c.level+
+"<br>🔥 EXP "+Math.floor(c.exp)+
+"/"+needExp(c.level)+
+"<br>🎂 Tuổi "+c.age+"/"+c.maxAge;
+
+
+
+// cập nhật kho
+
+document.getElementById("storageEgg").innerHTML=
+
+game.eggs.normal;
+
+
+
 }
 
 
@@ -183,7 +247,12 @@ document.getElementById("sellButton").style.display="none";
 
 
 
-// trứng nở
+
+
+// =======================
+// TRỨNG NỞ
+// =======================
+
 
 function checkHatch(){
 
@@ -192,32 +261,34 @@ let c=chicken();
 
 
 
-if(c.level==0){
+if(c.level===0){
 
 
-let time=Math.ceil(
+let t=Math.ceil(
+
 (c.hatchTime-Date.now())/1000
+
 );
 
 
 
-if(time>0){
+if(t>0){
 
 document.getElementById("time").innerHTML=
-"🥚 Còn "+time+"s";
+
+"🥚 Còn "+t+"s";
 
 }
 
 
 
-if(time<=0){
+if(t<=0){
 
 
 c.level=1;
 
 
-alert("🎉 Trứng nở thành 🐣");
-
+alert("🐣 Trứng đã nở!");
 
 }
 
@@ -238,9 +309,13 @@ updateGame();
 
 
 
-// EXP tự tăng
 
-setInterval(function(){
+// =======================
+// EXP TỰ TĂNG
+// =======================
+
+
+setInterval(()=>{
 
 
 let c=chicken();
@@ -263,8 +338,8 @@ levelUp();
 updateGame();
 
 
-},1500);
 
+},1500);
 
 
 
@@ -289,14 +364,15 @@ c.level++;
 
 
 alert(
+
 "🎉 Gà lên Lv "+c.level
+
 );
 
 
 }
 
 
-
 }
 
 
@@ -307,7 +383,10 @@ alert(
 
 
 
-// cám
+// =======================
+// CÁM
+// =======================
+
 
 function feed(amount){
 
@@ -316,7 +395,7 @@ let c=chicken();
 
 
 
-if(c.level==0){
+if(c.level===0){
 
 alert("🥚 Trứng chưa nở!");
 
@@ -381,7 +460,10 @@ feed(300);
 
 
 
-// đẻ trứng
+// =======================
+// ĐẺ TRỨNG
+// =======================
+
 
 function layingEgg(){
 
@@ -407,11 +489,9 @@ game.eggs.normal++;
 alert("🥚 Gà đã đẻ trứng");
 
 
-// TEST 5 giây
-
 c.eggTime=
-Date.now()+5000;
 
+Date.now()+EGG_TIME;
 
 
 }
@@ -431,7 +511,10 @@ updateGame();
 
 
 
-// bán trứng
+// =======================
+// BÁN TRỨNG
+// =======================
+
 
 function sellEgg(){
 
@@ -448,10 +531,9 @@ return;
 
 game.eggs.normal--;
 
-game.coin+=25;
 
+game.coin+=SELL_EGG;
 
-alert("💰 +25 xu");
 
 
 updateGame();
@@ -467,7 +549,10 @@ updateGame();
 
 
 
-// bán gà
+// =======================
+// BÁN GÀ
+// =======================
+
 
 function sellChicken(){
 
@@ -484,7 +569,8 @@ return;
 
 
 
-game.coin+=600;
+game.coin+=SELL_CHICKEN;
+
 
 
 alert("🐔 Bán gà +600 xu");
@@ -504,9 +590,9 @@ age:0,
 
 maxAge:7,
 
-hatchTime:Date.now()+10000,
+hatchTime:Date.now()+HATCH_TIME,
 
-eggTime:Date.now()+5000
+eggTime:Date.now()+EGG_TIME
 
 
 };
@@ -526,13 +612,12 @@ updateGame();
 
 
 
-// tăng tuổi test
+// =======================
+// TUỔI GÀ
+// =======================
 
-// TEST: 10 giây = 1 ngày
-// Sau này đổi lại 86400000
 
-
-setInterval(function(){
+setInterval(()=>{
 
 
 let c=chicken();
@@ -541,16 +626,20 @@ let c=chicken();
 
 if(c.level>0){
 
+
 c.age++;
+
 
 
 if(c.age>=c.maxAge){
 
 
-alert("💀 Gà đã hết tuổi thọ");
+alert("💀 Gà hết tuổi thọ");
+
 
 
 game.chickens[0]={
+
 
 type:"normal",
 
@@ -562,15 +651,16 @@ age:0,
 
 maxAge:7,
 
-hatchTime:Date.now()+10000,
+hatchTime:Date.now()+HATCH_TIME,
 
-eggTime:Date.now()+5000
+eggTime:Date.now()+EGG_TIME
+
 
 };
 
 
-}
 
+}
 
 
 }
@@ -580,13 +670,178 @@ eggTime:Date.now()+5000
 updateGame();
 
 
-},10000);
+
+},AGE_TIME);
 
 
 
 
 
 
+
+
+
+// =======================
+// MENU
+// =======================
+
+
+function openPage(page){
+
+
+let pages=document.querySelectorAll(".page");
+
+
+pages.forEach(p=>{
+
+p.classList.remove("active");
+
+});
+
+
+
+document.getElementById(page).classList.add("active");
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// =======================
+// SHOP
+// =======================
+
+
+function buyEgg(){
+
+
+if(game.coin<BUY_EGG){
+
+alert("Không đủ xu");
+
+return;
+
+}
+
+
+
+game.coin-=BUY_EGG;
+
+
+game.eggs.normal++;
+
+
+alert("🥚 Mua trứng thành công");
+
+
+updateGame();
+
+
+}
+
+
+
+
+
+
+
+
+
+// =======================
+// NHIỆM VỤ
+// =======================
+
+
+function questReward(){
+
+
+let reward=Math.floor(
+
+Math.random()*4501
+
+)+500;
+
+
+
+game.coin+=reward;
+
+
+
+alert(
+
+"🎁 Nhận "+reward+" xu"
+
+);
+
+
+
+updateGame();
+
+
+}
+
+
+
+
+
+
+
+
+
+// =======================
+// TÀI KHOẢN
+// =======================
+
+
+function withdrawDemo(){
+
+
+if(game.coin<=0){
+
+alert("Chưa có xu");
+
+return;
+
+}
+
+
+
+account.wallet+=game.coin;
+
+
+game.coin=0;
+
+
+
+document.getElementById("wallet").innerHTML=
+
+account.wallet;
+
+
+
+alert("💸 Rút demo thành công");
+
+
+updateGame();
+
+
+}
+
+
+
+
+
+
+// =======================
+// CHẠY GAME
+// =======================
 
 
 setInterval(checkHatch,1000);
