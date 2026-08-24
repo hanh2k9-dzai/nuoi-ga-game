@@ -19,6 +19,7 @@
 <div class="game">
 
 
+
 <!-- ================= NHÀ ================= -->
 
 <div id="homePage" class="page active">
@@ -27,28 +28,19 @@
 <h1>🐔 Nuôi Gà</h1>
 
 
-<div id="chicken">
-🥚
+<div id="mainChicken">
+🐔
 </div>
 
 
-<h2 id="stage">
-Trứng
+<h2 id="mainStatus">
+Đang tải...
 </h2>
 
 
 
+
 <div class="stats">
-
-
-<div class="status">
-⭐ Lv <span id="level">0</span>
-</div>
-
-
-<div class="status">
-🔥 <span id="exp">0/100</span>
-</div>
 
 
 <div class="status">
@@ -62,80 +54,41 @@ Trứng
 
 
 <div class="status">
-🎂 <span id="age">0</span>/7
+⭐ <span id="level">0</span>
+</div>
+
+
+<div class="status">
+🔥 <span id="exp">0</span>
 </div>
 
 
 </div>
 
 
-
-<div id="timeBox">
-
-⏳ <span id="time">
-Còn 10s
-</span>
-
-</div>
-
-
-
-<h3>🍚 Cho ăn</h3>
 
 
 <div class="buttons">
 
 
-<button onclick="camThuong()">
-🌽 +10
+<button onclick="feedSelected(10)">
+🌽 Cám thường
 </button>
 
 
-<button onclick="camTangTrong()">
-🐷 +30
+<button onclick="feedSelected(50)">
+⚡ Cám tăng
 </button>
 
-
-<button onclick="camConHeo()">
-🐖 +50
-</button>
-
-
-<button onclick="camTangTruong()">
-⚡ +100
-</button>
-
-
-<button onclick="camSieuVip()">
-✨ +300
-</button>
 
 
 </div>
 
 
 
-
-<div class="actions">
-
-
-<button onclick="sellEgg()">
-🥚 Bán trứng
-</button>
-
-
-
-<button id="sellButton" onclick="sellChicken()" style="display:none">
-
-🐔 Bán gà
-
-</button>
-
-
 </div>
 
 
-</div>
 
 
 
@@ -149,24 +102,53 @@ Còn 10s
 <div id="coopPage" class="page">
 
 
-<h2>🏠 Chuồng gà</h2>
+<h2 id="coopName">
+🏠 Chuồng thường
+</h2>
 
 
-<div class="box">
-
-
-<p>🐔 Gà hiện tại</p>
-
-
-<p id="coopInfo">
-
-Đang tải...
-
+<p>
+Sức chứa:
+<span id="coopCapacity">
+3
+</span>
 </p>
 
 
 
+<div id="chickenSlots" class="slots">
+
+
 </div>
+
+
+
+<h3>Đổi chuồng</h3>
+
+
+
+<button onclick="buySuperCoop()">
+
+🔥 Chuồng siêu cấp
+
+<br>
+
+25.000 xu
+
+</button>
+
+
+
+<button onclick="buyStarCoop()">
+
+⭐ Chuồng siêu sao
+
+<br>
+
+20.000đ
+
+</button>
+
 
 
 </div>
@@ -182,7 +164,7 @@ Còn 10s
 <!-- ================= KHO ================= -->
 
 
-<div id="eggPage" class="page">
+<div id="storagePage" class="page">
 
 
 <h2>🥚 Kho</h2>
@@ -194,21 +176,43 @@ Còn 10s
 
 <p>
 🥚 Trứng thường:
-<span id="storageEgg">0</span>
+
+<span id="normalEgg">
+0
+</span>
+
+</p>
+
+
+<p>
+✨ Trứng siêu cấp:
+
+<span id="superEgg">
+0
+</span>
+
 </p>
 
 
 
 <p>
 🟡 Trứng vàng:
+
+<span id="goldEgg">
 0
+</span>
+
 </p>
 
 
 
 <p>
 💎 Trứng kim cương:
+
+<span id="diamondEgg">
 0
+</span>
+
 </p>
 
 
@@ -232,20 +236,34 @@ Còn 10s
 <div id="shopPage" class="page">
 
 
-<h2>🏪 Shop</h2>
+<h2>🏪 Shop gà</h2>
 
 
 
-<div class="box">
 
+<button onclick="buyNormalChicken()">
 
-<button onclick="buyEgg()">
-
-🥚 Trứng thường
+🐔 Gà thường
 
 <br>
 
-250 xu
+400 xu
+
+</button>
+
+
+
+<br>
+
+
+
+<button onclick="buySuperChicken()">
+
+🔥 Gà siêu cấp
+
+<br>
+
+2000 xu
 
 </button>
 
@@ -257,11 +275,11 @@ Còn 10s
 
 <button>
 
-🥚 Trứng siêu cấp
+🟡 Gà vàng
 
 <br>
 
-3000 xu
+35000đ
 
 </button>
 
@@ -273,12 +291,14 @@ Còn 10s
 
 <button>
 
-🍚 Cám
+💎 Gà kim cương
+
+<br>
+
+80000đ
 
 </button>
 
-
-</div>
 
 
 </div>
@@ -300,12 +320,11 @@ Còn 10s
 <h2>🎯 Nhiệm vụ</h2>
 
 
-
 <div class="box">
 
 
 <p>
-🎁 Nhận thưởng random
+Nhận thưởng random
 </p>
 
 
@@ -314,10 +333,9 @@ Còn 10s
 </p>
 
 
-
 <button onclick="questReward()">
 
-Nhận thưởng
+🎁 Nhận
 
 </button>
 
@@ -350,6 +368,7 @@ Nhận thưởng
 
 <p>
 🆔 ID:
+
 <span id="userID">
 10001
 </span>
@@ -360,6 +379,7 @@ Nhận thưởng
 
 <p>
 👤 Tên:
+
 <span id="username">
 ChickenPlayer
 </span>
@@ -370,6 +390,7 @@ ChickenPlayer
 
 <p>
 🪙 Ví xu:
+
 <span id="wallet">
 0
 </span>
@@ -380,7 +401,7 @@ ChickenPlayer
 
 <button onclick="withdrawDemo()">
 
-💸 Rút tiền DEMO
+💸 Rút tiền demo
 
 </button>
 
@@ -424,7 +445,7 @@ Chuồng
 
 
 
-<button onclick="openPage('eggPage')">
+<button onclick="openPage('storagePage')">
 
 🥚
 <br>
@@ -461,7 +482,6 @@ Nhiệm vụ
 TK
 
 </button>
-
 
 
 </div>
