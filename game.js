@@ -1,44 +1,40 @@
-// ===============================
-// GAME.JS v0.7.2.1 PART 1
-// ===============================
+// ======================================
+// CHICKEN FARM
+// GAME.JS v0.7.2.1
+// FULL VERSION
+// ======================================
 
 
+// ===============================
 // CONFIG
+// ===============================
 
-const HATCH_TIME = 10000;
-
-const EGG_TIME = 15000;
-
-const EXP_TIME = 1500;
-
-const AGE_TIME = 120000;
-
-
-
+const HATCH_TIME = 10000;      // test 10s
+const EGG_TIME = 15000;        // test 15s
+const EXP_TIME = 1500;         // +2 exp
+const AGE_TIME = 120000;       // test tuổi 2 phút
 
 
 
 // ===============================
-// DATA
+// GAME DATA
 // ===============================
 
 
-let game={
+let game = {
 
 
 wallet:{
-
 
 coin:0,
 
 money:0
 
-
 },
 
 
-eggs:{
 
+eggs:{
 
 normal:0,
 
@@ -48,12 +44,12 @@ gold:0,
 
 diamond:0
 
-
 },
 
 
-feed:{
 
+
+feed:{
 
 normal:0,
 
@@ -65,7 +61,6 @@ grow:0,
 
 vip:0
 
-
 },
 
 
@@ -74,12 +69,15 @@ vip:0
 coops:{
 
 
-normal:{
+// Chuồng thường
 
+normal:{
 
 name:"🏠 Chuồng thường",
 
 open:true,
+
+price:0,
 
 limit:3,
 
@@ -89,12 +87,15 @@ chickens:[]
 
 
 
-super:{
+// Chuồng siêu cấp
 
+super:{
 
 name:"🔥 Chuồng siêu cấp",
 
 open:false,
+
+price:25000,
 
 limit:5,
 
@@ -104,12 +105,15 @@ chickens:[]
 
 
 
-star:{
+// Chuồng siêu sao
 
+star:{
 
 name:"⭐ Chuồng siêu sao",
 
 open:false,
+
+price:20000,
 
 limit:7,
 
@@ -120,6 +124,7 @@ chickens:[]
 
 
 },
+
 
 
 
@@ -167,7 +172,7 @@ history:[]
 function createChicken(type="normal",first=false){
 
 
-return{
+return {
 
 
 id:Date.now()+Math.random(),
@@ -185,24 +190,39 @@ exp:0,
 age:0,
 
 
+
 hatch:first,
 
 
-hatchTime:Date.now()+HATCH_TIME,
+hatchTime:
+
+Date.now()+HATCH_TIME,
 
 
-eggTime:Date.now()+EGG_TIME,
+
+eggTime:
+
+Date.now()+EGG_TIME,
+
 
 
 maxAge:
 
-type==="diamond"?
+type==="diamond"
 
-30:
+?
 
-type==="gold"?
+30
 
-14:
+:
+
+type==="gold"
+
+?
+
+14
+
+:
 
 7
 
@@ -220,30 +240,39 @@ type==="gold"?
 
 
 
+
 // ===============================
-// ICON + TÊN
+// TÊN GÀ
 // ===============================
 
 
 function chickenName(type){
 
 
-if(type==="super")
+switch(type){
+
+
+case "super":
 
 return "🔥 Gà siêu cấp";
 
 
-if(type==="gold")
+case "gold":
 
 return "🟡 Gà vàng";
 
 
-if(type==="diamond")
+case "diamond":
 
 return "💎 Gà kim cương";
 
 
+default:
+
 return "🐔 Gà thường";
+
+
+}
 
 
 }
@@ -253,8 +282,15 @@ return "🐔 Gà thường";
 
 
 
-function chickenIcon(type,lv){
 
+
+
+// ===============================
+// ICON GÀ
+// ===============================
+
+
+function chickenIcon(type,level){
 
 
 if(type==="diamond")
@@ -262,9 +298,11 @@ if(type==="diamond")
 return "💎🐔";
 
 
+
 if(type==="gold")
 
 return "🟡🐔";
+
 
 
 if(type==="super")
@@ -273,25 +311,29 @@ return "🔥🐔";
 
 
 
-if(lv<5)
+if(level<5)
 
 return "🐣";
 
 
-if(lv<10)
+
+if(level<10)
 
 return "🐥";
 
 
-if(lv<25)
+
+if(level<25)
 
 return "🐓";
+
 
 
 return "🐔";
 
 
 }
+
 
 
 
@@ -308,9 +350,10 @@ return "🐔";
 function needExp(level){
 
 
-if(level<=0)
+if(level<=1)
 
 return 100;
+
 
 
 return 100+(level-1)*50;
@@ -323,24 +366,24 @@ return 100+(level-1)*50;
 
 
 
-function levelUp(c){
+function levelUp(chicken){
 
 
 while(
 
-c.exp>=needExp(c.level)
+chicken.exp>=needExp(chicken.level)
 
 &&
 
-c.level<25
+chicken.level<25
 
 ){
 
 
-c.exp-=needExp(c.level);
+chicken.exp-=needExp(chicken.level);
 
 
-c.level++;
+chicken.level++;
 
 
 }
@@ -357,86 +400,7 @@ c.level++;
 
 
 // ===============================
-// CHUỒNG
-// ===============================
-
-
-function openCoop(type){
-
-
-
-if(!game.coops[type].open){
-
-
-if(type==="super"){
-
-
-if(game.wallet.coin<25000){
-
-alert("Cần 25000 xu để mở");
-
-return;
-
-}
-
-
-game.wallet.coin-=25000;
-
-
-}
-
-
-
-if(type==="star"){
-
-
-if(game.wallet.money<20000){
-
-
-alert("Cần 20000 VNĐ để mở");
-
-
-return;
-
-
-}
-
-
-game.wallet.money-=20000;
-
-
-}
-
-
-
-game.coops[type].open=true;
-
-
-}
-
-
-
-game.selectedCoop=type;
-
-
-game.selectedChicken=null;
-
-
-
-update();
-
-
-}
-
-
-
-
-
-
-
-
-// ===============================
-// THÊM GÀ
+// THÊM GÀ VÀO CHUỒNG
 // ===============================
 
 
@@ -473,7 +437,6 @@ return;
 
 
 
-
 house.chickens.push(
 
 createChicken(type)
@@ -485,6 +448,87 @@ createChicken(type)
 update();
 
 
+}
+
+
+
+
+
+
+
+
+
+// ===============================
+// CHỌN CHUỒNG
+// ===============================
+
+
+function openCoop(type){
+
+
+let coop=game.coops[type];
+
+
+
+if(!coop.open){
+
+
+if(type==="super"){
+
+
+if(game.wallet.coin<25000){
+
+alert("Cần 25000 xu");
+
+return;
+
+}
+
+
+game.wallet.coin-=25000;
+
+
+}
+
+
+
+if(type==="star"){
+
+
+if(game.wallet.money<20000){
+
+
+alert("Cần 20000 VNĐ");
+
+
+return;
+
+
+}
+
+
+game.wallet.money-=20000;
+
+
+}
+
+
+
+coop.open=true;
+
+
+}
+
+
+
+game.selectedCoop=type;
+
+
+game.selectedChicken=null;
+
+
+update();
+
 
 }
 
@@ -494,6 +538,11 @@ update();
 
 
 
+
+
+// ===============================
+// LẤY GÀ ĐANG CHỌN
+// ===============================
 
 
 function getCurrentChicken(){
@@ -511,16 +560,8 @@ return game.coops[game.selectedCoop]
 
 
 }
-
-
-
-
-
-
-
-
 // ===============================
-// CHỌN GÀ
+// CHỌN GÀ TRONG CHUỒNG
 // ===============================
 
 
@@ -533,8 +574,19 @@ game.selectedChicken=index;
 openChickenDetail();
 
 
+update();
+
 
 }
+
+
+
+
+
+
+
+
+
 // ===============================
 // POPUP CHI TIẾT GÀ
 // ===============================
@@ -543,17 +595,26 @@ openChickenDetail();
 function openChickenDetail(){
 
 
-let c=getCurrentChicken();
+let chicken=getCurrentChicken();
 
 
 
-if(!c)return;
+if(!chicken)
+
+return;
 
 
 
 let box=document.getElementById("chickenDetail");
 
+
 let content=document.getElementById("detailContent");
+
+
+
+if(!box || !content)
+
+return;
 
 
 
@@ -561,34 +622,36 @@ box.style.display="block";
 
 
 
+
 let status="🐣 Gà mới nở";
 
 
 
-if(c.level>=25)
+if(chicken.level>=25)
 
 status="🐔 Trưởng thành";
 
-else if(c.level>=10)
+else if(chicken.level>=10)
 
 status="🐓 Gà lớn";
 
-else if(c.level>=5)
+else if(chicken.level>=5)
 
 status="🐥 Gà con";
 
 
 
 
-let egg=
 
-Math.max(
+
+
+let eggTime=Math.max(
 
 0,
 
 Math.ceil(
 
-(c.eggTime-Date.now())/1000
+(chicken.eggTime-Date.now())/1000
 
 )
 
@@ -596,31 +659,42 @@ Math.ceil(
 
 
 
+
+
 content.innerHTML=
+
 
 `
 
 <h3>
 
-${chickenName(c.type)}
+${chickenIcon(chicken.type,chicken.level)}
+
+${chickenName(chicken.type)}
 
 </h3>
 
 
+
 <p>
 
-⭐ Lv:
+⭐ Level:
 
-${c.level}/25
+${chicken.level}/25
 
 </p>
+
 
 
 <p>
 
 🔥 EXP:
 
-${Math.floor(c.exp)}/${needExp(c.level)}
+${Math.floor(chicken.exp)}
+
+/
+
+${needExp(chicken.level)}
 
 </p>
 
@@ -630,7 +704,11 @@ ${Math.floor(c.exp)}/${needExp(c.level)}
 
 🎂 Tuổi:
 
-${c.age}/${c.maxAge} ngày
+${chicken.age}
+
+/
+
+${chicken.maxAge} ngày
 
 </p>
 
@@ -650,11 +728,14 @@ ${status}
 
 🥚 Đẻ trứng:
 
-${egg}s
+${eggTime}s
 
 </p>
 
+
 `;
+
+
 
 
 
@@ -662,27 +743,30 @@ let sell=document.getElementById("sellChickenBtn");
 
 
 
+if(sell){
+
+
 if(
 
-c.type==="gold"
+chicken.type==="gold"
 
 ||
 
-c.type==="diamond"
+chicken.type==="diamond"
 
 ){
 
 
-sell.innerHTML="🔒 Không thể bán";
+sell.innerHTML="🔒 Gà này không bán";
 
 
 }
 
 
-else if(c.level<25){
+else if(chicken.level<25){
 
 
-sell.innerHTML="🔒 Chưa đạt Lv25";
+sell.innerHTML="🔒 Chưa đủ Lv25";
 
 
 }
@@ -697,11 +781,17 @@ sell.innerHTML="💰 Bán gà";
 }
 
 
+}
+
+
 
 updateFeedDetail();
 
 
+
 }
+
+
 
 
 
@@ -712,9 +802,13 @@ updateFeedDetail();
 function closeChickenDetail(){
 
 
-document.getElementById("chickenDetail")
+let box=document.getElementById("chickenDetail");
 
-.style.display="none";
+
+if(box)
+
+box.style.display="none";
+
 
 
 }
@@ -725,8 +819,10 @@ document.getElementById("chickenDetail")
 
 
 
+
+
 // ===============================
-// MENU CÁM
+// MENU CÁM DROPDOWN
 // ===============================
 
 
@@ -734,6 +830,13 @@ function toggleFeedMenu(){
 
 
 let menu=document.getElementById("feedMenu");
+
+
+
+if(!menu)
+
+return;
+
 
 
 if(menu.style.display==="block"){
@@ -753,69 +856,6 @@ menu.style.display="block";
 }
 
 
-
-}
-
-
-
-
-
-
-function updateFeedDetail(){
-
-
-
-let ids=[
-
-
-"detailFeedNormal",
-
-"detailFeedSuper",
-
-"detailFeedWeight",
-
-"detailFeedGrow",
-
-"detailFeedVip"
-
-
-];
-
-
-
-let values=[
-
-
-game.feed.normal,
-
-game.feed.super,
-
-game.feed.weight,
-
-game.feed.grow,
-
-game.feed.vip
-
-
-];
-
-
-
-ids.forEach((id,i)=>{
-
-
-let e=document.getElementById(id);
-
-
-if(e)
-
-e.innerHTML=values[i];
-
-
-});
-
-
-
 }
 
 
@@ -827,20 +867,24 @@ e.innerHTML=values[i];
 
 
 // ===============================
-// CHO ĂN
+// CÁM
 // ===============================
 
 
-let feedExp={
+const feedExp={
 
 
 normal:40,
 
+
 super:120,
+
 
 weight:240,
 
+
 grow:500,
+
 
 vip:1000
 
@@ -850,15 +894,41 @@ vip:1000
 
 
 
-function feedDetailChicken(type){
 
 
 
-let c=getCurrentChicken();
+
+
+function feedChicken(type){
+
+
+let chicken=getCurrentChicken();
 
 
 
-if(!c)return;
+if(!chicken){
+
+
+alert("Chọn gà trước");
+
+
+return;
+
+
+}
+
+
+
+if(chicken.hatch){
+
+
+alert("Gà chưa nở");
+
+
+return;
+
+
+}
 
 
 
@@ -879,14 +949,33 @@ game.feed[type]--;
 
 
 
-c.exp+=feedExp[type];
+chicken.exp+=feedExp[type];
 
 
-levelUp(c);
+
+levelUp(chicken);
 
 
 
 update();
+
+
+
+}
+
+
+
+
+
+
+
+
+
+function feedDetailChicken(type){
+
+
+feedChicken(type);
+
 
 
 openChickenDetail();
@@ -901,217 +990,60 @@ openChickenDetail();
 
 
 
+
 // ===============================
-// BÁN GÀ
+// UPDATE SỐ CÁM TRONG POPUP
 // ===============================
 
 
-function sellDetailChicken(){
+function updateFeedDetail(){
 
 
 
-let c=getCurrentChicken();
+let list=[
+
+
+["detailFeedNormal","normal"],
+
+
+["detailFeedSuper","super"],
+
+
+["detailFeedWeight","weight"],
+
+
+["detailFeedGrow","grow"],
+
+
+["detailFeedVip","vip"]
+
+
+];
 
 
 
-if(!c)return;
+
+list.forEach(item=>{
 
 
-
-if(
-
-c.type==="gold"
-
-||
-
-c.type==="diamond"
-
-){
+let el=document.getElementById(item[0]);
 
 
-alert("Gà này không thể bán");
+if(el){
 
 
-return;
+el.innerHTML=
+
+game.feed[item[1]];
 
 
 }
-
-
-
-
-if(c.level<25){
-
-
-alert("Gà chưa đạt Lv25");
-
-
-return;
-
-
-}
-
-
-
-
-
-let price=
-
-c.type==="super"
-
-?
-
-2500
-
-:
-
-600;
-
-
-
-
-game.wallet.coin+=price;
-
-
-
-game.coops[game.selectedCoop]
-
-.chickens.splice(
-
-game.selectedChicken,
-
-1
-
-);
-
-
-
-addHistory(
-
-"Bán "
-
-+
-
-chickenName(c.type)
-
-+
-
-" +"
-
-+
-
-price
-
-+
-
-" xu"
-
-);
-
-
-
-closeChickenDetail();
-
-
-game.selectedChicken=null;
-
-
-update();
-
-
-
-}
-
-
-
-
-
-
-
-
-
-// ===============================
-// RENDER CHUỒNG
-// ===============================
-
-
-function renderCoop(){
-
-
-
-let box=document.getElementById("coopSlots");
-
-
-
-if(!box)return;
-
-
-
-box.innerHTML="";
-
-
-
-let coop=game.coops[game.selectedCoop];
-
-
-
-document.getElementById("coopTitle").innerHTML=
-
-coop.name;
-
-
-
-coop.chickens.forEach((c,i)=>{
-
-
-
-let div=document.createElement("div");
-
-
-
-div.className="slot";
-
-
-
-div.onclick=()=>selectChicken(i);
-
-
-
-div.innerHTML=`
-
-<div class="emoji">
-
-${chickenIcon(c.type,c.level)}
-
-</div>
-
-
-${chickenName(c.type)}
-
-<br>
-
-⭐ Lv ${c.level}
-
-<br>
-
-🔥 ${Math.floor(c.exp)}/${needExp(c.level)}
-
-<br>
-
-🎂 ${c.age}/${c.maxAge}
-
-`;
-
-
-
-box.appendChild(div);
 
 
 
 });
 
 
-
 }
 
 
@@ -1123,7 +1055,7 @@ box.appendChild(div);
 
 
 // ===============================
-// ĐẺ TRỨNG
+// EXP TỰ TĂNG
 // ===============================
 
 
@@ -1137,55 +1069,26 @@ Object.values(game.coops)
 
 
 
-coop.chickens.forEach(c=>{
+coop.chickens.forEach(chicken=>{
 
 
 
 if(
 
-!c.hatch
+!chicken.hatch
 
 &&
 
-c.level>=10
-
-&&
-
-Date.now()>=c.eggTime
+chicken.level<25
 
 ){
 
 
-
-if(c.type==="super")
-
-game.eggs.super++;
+chicken.exp+=2;
 
 
 
-else if(c.type==="gold")
-
-game.eggs.gold++;
-
-
-
-else if(c.type==="diamond")
-
-game.eggs.diamond++;
-
-
-
-else
-
-game.eggs.normal++;
-
-
-
-
-
-c.eggTime=
-
-Date.now()+EGG_TIME;
+levelUp(chicken);
 
 
 
@@ -1195,6 +1098,222 @@ Date.now()+EGG_TIME;
 
 });
 
+
+});
+
+
+
+update();
+
+
+
+},EXP_TIME);
+
+
+
+
+
+
+
+
+
+// ===============================
+// TRỨNG NỞ
+// ===============================
+
+
+setInterval(()=>{
+
+
+Object.values(game.coops)
+
+.forEach(coop=>{
+
+
+
+coop.chickens.forEach(chicken=>{
+
+
+
+if(chicken.hatch){
+
+
+
+let time=Math.ceil(
+
+(chicken.hatchTime-Date.now())
+
+/1000
+
+);
+
+
+
+let box=document.getElementById("hatchTime");
+
+
+
+if(time>0){
+
+
+if(box){
+
+
+box.style.display="block";
+
+
+box.innerHTML=
+
+"⏳ Còn "+time+"s";
+
+
+}
+
+
+}
+
+else{
+
+
+chicken.hatch=false;
+
+
+chicken.level=1;
+
+
+
+if(box)
+
+
+box.style.display="none";
+
+
+
+alert(
+
+"🐣 "+chickenName(chicken.type)
+
++" mới nở!"
+
+);
+
+
+
+}
+
+
+
+}
+
+
+
+});
+
+
+
+});
+
+
+
+update();
+
+
+
+},1000);
+// ===============================
+// ĐẺ TRỨNG
+// ===============================
+
+
+setInterval(()=>{
+
+
+Object.values(game.coops)
+
+.forEach(coop=>{
+
+
+coop.chickens.forEach(chicken=>{
+
+
+
+if(
+
+!chicken.hatch
+
+&&
+
+chicken.level>=10
+
+&&
+
+Date.now()>=chicken.eggTime
+
+){
+
+
+
+switch(chicken.type){
+
+
+case "super":
+
+game.eggs.super++;
+
+break;
+
+
+
+case "gold":
+
+game.eggs.gold++;
+
+break;
+
+
+
+case "diamond":
+
+game.eggs.diamond++;
+
+break;
+
+
+
+default:
+
+game.eggs.normal++;
+
+break;
+
+
+}
+
+
+
+
+
+chicken.eggTime=
+
+Date.now()+EGG_TIME;
+
+
+
+addHistory(
+
+chickenName(chicken.type)
+
++" đã đẻ trứng"
+
+);
+
+
+
+}
+
+
+
+});
 
 
 });
@@ -1216,18 +1335,91 @@ update();
 
 
 // ===============================
-// SHOP
+// TUỔI GÀ
 // ===============================
 
 
-function buyChicken(type){
+setInterval(()=>{
+
+
+Object.values(game.coops)
+
+.forEach(coop=>{
 
 
 
-let coin={
+for(let i=coop.chickens.length-1;i>=0;i--){
+
+
+let chicken=coop.chickens[i];
+
+
+
+if(!chicken.hatch){
+
+
+chicken.age++;
+
+
+
+if(chicken.age>=chicken.maxAge){
+
+
+
+alert(
+
+chickenName(chicken.type)
+
++" đã chết"
+
+);
+
+
+
+coop.chickens.splice(i,1);
+
+
+
+}
+
+
+
+}
+
+
+
+}
+
+
+
+});
+
+
+
+update();
+
+
+
+},AGE_TIME);
+
+
+
+
+
+
+
+
+
+// ===============================
+// SHOP GÀ
+// ===============================
+
+
+const chickenCoinPrice={
 
 
 normal:400,
+
 
 super:2000
 
@@ -1236,10 +1428,11 @@ super:2000
 
 
 
-let money={
+const chickenMoneyPrice={
 
 
 gold:35000,
+
 
 diamond:80000
 
@@ -1248,20 +1441,46 @@ diamond:80000
 
 
 
-if(type==="gold"||type==="diamond"){
 
 
-if(game.wallet.money<money[type]){
+
+
+function buyChicken(type){
+
+
+
+let targetCoop;
+
+
+
+if(
+
+type==="gold"
+
+||
+
+type==="diamond"
+
+){
+
+
+targetCoop="star";
+
+
+if(game.wallet.money < chickenMoneyPrice[type]){
+
 
 alert("Không đủ VNĐ");
 
+
 return;
+
 
 }
 
 
 
-game.wallet.money-=money[type];
+game.wallet.money-=chickenMoneyPrice[type];
 
 
 
@@ -1270,38 +1489,8 @@ game.wallet.money-=money[type];
 else{
 
 
-if(game.wallet.coin<coin[type]){
 
-
-alert("Không đủ xu");
-
-
-return;
-
-
-}
-
-
-
-game.wallet.coin-=coin[type];
-
-
-
-}
-
-
-
-
-
-let coop=
-
-type==="gold"||type==="diamond"
-
-?
-
-"star"
-
-:
+targetCoop=
 
 type==="super"
 
@@ -1315,7 +1504,46 @@ type==="super"
 
 
 
-addChicken(type,coop);
+
+
+if(game.wallet.coin < chickenCoinPrice[type]){
+
+
+alert("Không đủ xu");
+
+
+return;
+
+
+}
+
+
+
+game.wallet.coin-=chickenCoinPrice[type];
+
+
+
+}
+
+
+
+addChicken(type,targetCoop);
+
+
+
+addHistory(
+
+"Mua "
+
++
+
+chickenName(type)
+
+);
+
+
+
+update();
 
 
 
@@ -1334,16 +1562,20 @@ addChicken(type,coop);
 // ===============================
 
 
-let feedPrice={
+const feedPrice={
 
 
 normal:80,
 
+
 super:160,
+
 
 weight:300,
 
+
 grow:600,
+
 
 vip:1200
 
@@ -1353,11 +1585,13 @@ vip:1200
 
 
 
+
+
 function buyFeed(type){
 
 
 
-if(game.wallet.coin<feedPrice[type]){
+if(game.wallet.coin < feedPrice[type]){
 
 
 alert("Không đủ xu");
@@ -1373,8 +1607,181 @@ return;
 game.wallet.coin-=feedPrice[type];
 
 
+
 game.feed[type]++;
 
+
+
+addHistory(
+
+"Mua cám "
+
++
+
+type
+
+);
+
+
+
+update();
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// ===============================
+// BÁN GÀ
+// ===============================
+
+
+function sellDetailChicken(){
+
+
+
+let chicken=getCurrentChicken();
+
+
+
+if(!chicken)
+
+return;
+
+
+
+
+
+if(
+
+chicken.type==="gold"
+
+||
+
+chicken.type==="diamond"
+
+){
+
+
+
+alert(
+
+"Gà vàng và kim cương không bán được"
+
+);
+
+
+
+return;
+
+
+
+}
+
+
+
+
+
+
+if(chicken.level<25){
+
+
+
+alert(
+
+"Gà phải đạt Lv25 mới bán được"
+
+);
+
+
+
+return;
+
+
+
+}
+
+
+
+
+
+let price=
+
+
+
+chicken.type==="super"
+
+?
+
+
+2500
+
+
+:
+
+
+600;
+
+
+
+
+
+
+
+game.wallet.coin+=price;
+
+
+
+game.coops[game.selectedCoop]
+
+.chickens.splice(
+
+game.selectedChicken,
+
+1
+
+);
+
+
+
+
+
+addHistory(
+
+"Bán "
+
++
+
+chickenName(chicken.type)
+
++
+
+" +"
+
++
+
+price
+
++
+
+" xu"
+
+);
+
+
+
+game.selectedChicken=null;
+
+
+
+closeChickenDetail();
 
 
 update();
@@ -1396,14 +1803,17 @@ update();
 // ===============================
 
 
-let eggPrice={
+const eggPrice={
 
 
 normal:25,
 
+
 super:50,
 
+
 gold:1000,
+
 
 diamond:3500
 
@@ -1414,12 +1824,21 @@ diamond:3500
 
 
 
+
 function sellEgg(type){
 
 
-if(game.eggs[type]<=0)
+
+if(game.eggs[type]<=0){
+
+
+alert("Không có trứng");
+
 
 return;
+
+
+}
 
 
 
@@ -1448,3 +1867,839 @@ update();
 
 
 }
+
+
+
+
+
+
+
+
+
+// ===============================
+// MỞ CHUỒNG HIỂN THỊ
+// ===============================
+
+
+function showCoopInfo(){
+
+
+let box=document.getElementById("coopAction");
+
+
+
+if(!box)
+
+return;
+
+
+
+
+let coop=game.coops[game.selectedCoop];
+
+
+
+
+if(coop.open){
+
+
+box.innerHTML=
+
+`
+
+<div>
+
+${coop.name}
+
+<br>
+
+Slot:
+
+${coop.chickens.length}/${coop.limit}
+
+</div>
+
+`;
+
+
+
+return;
+
+
+}
+
+
+
+
+
+if(game.selectedCoop==="super"){
+
+
+
+box.innerHTML=
+
+`
+
+🔥 Chuồng siêu cấp
+
+<br>
+
+Giá:
+
+25.000 xu
+
+<br>
+
+<button onclick="openCoop('super')">
+
+Mở chuồng
+
+</button>
+
+`;
+
+
+
+}
+
+
+
+
+
+if(game.selectedCoop==="star"){
+
+
+
+box.innerHTML=
+
+`
+
+⭐ Chuồng siêu sao
+
+<br>
+
+Giá:
+
+20.000 VNĐ
+
+<br>
+
+<button onclick="openCoop('star')">
+
+Mở chuồng
+
+</button>
+
+`;
+
+
+
+}
+
+
+
+}
+// ===============================
+// TIỀN + VÍ
+// ===============================
+
+
+// 100 VNĐ = 500 xu
+
+function moneyToCoin(){
+
+
+if(game.wallet.money < 100){
+
+
+alert("Cần tối thiểu 100 VNĐ");
+
+
+return;
+
+
+}
+
+
+
+game.wallet.money-=100;
+
+
+game.wallet.coin+=500;
+
+
+
+addHistory(
+
+"Đổi 100 VNĐ → 500 xu"
+
+);
+
+
+
+update();
+
+
+
+}
+
+
+
+
+
+
+
+// 50000 xu = 500 VNĐ
+
+function coinToMoney(){
+
+
+
+if(game.wallet.coin < 50000){
+
+
+alert("Cần 50000 xu");
+
+
+return;
+
+
+}
+
+
+
+game.wallet.coin-=50000;
+
+
+game.wallet.money+=500;
+
+
+
+addHistory(
+
+"Đổi 50000 xu → 500 VNĐ"
+
+);
+
+
+
+update();
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// ===============================
+// RÚT TIỀN / BANK
+// ===============================
+
+
+function withdrawMoney(){
+
+
+
+alert(
+
+"💸 Rút tiền demo: "
+
++
+
+game.wallet.money
+
++
+
+" VNĐ"
+
+);
+
+
+
+}
+
+
+
+function linkBank(){
+
+
+
+alert(
+
+"🏦 Đã liên kết Bank demo"
+
+);
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// ===============================
+// NHIỆM VỤ
+// ===============================
+
+
+function getQuestReward(){
+
+
+
+game.wallet.coin+=10000;
+
+
+game.wallet.money+=100000;
+
+
+
+addHistory(
+
+"🎯 Nhiệm vụ +10000 xu +100000 VNĐ"
+
+);
+
+
+
+alert(
+
+"🎉 Nhận thưởng thành công!"
+
+);
+
+
+
+update();
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// ===============================
+// LỊCH SỬ
+// ===============================
+
+
+function addHistory(text){
+
+
+
+account.history.unshift(text);
+
+
+
+let box=document.getElementById("history");
+
+
+
+if(box){
+
+
+box.innerHTML=
+
+account.history.join("<br>");
+
+
+}
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// ===============================
+// UPDATE GIAO DIỆN
+// ===============================
+
+
+function update(){
+
+
+
+let coin=document.getElementById("coin");
+
+let money=document.getElementById("money");
+
+
+
+if(coin)
+
+coin.innerHTML=
+
+game.wallet.coin;
+
+
+
+if(money)
+
+money.innerHTML=
+
+game.wallet.money;
+
+
+
+
+
+let wc=document.getElementById("walletCoin");
+
+let wm=document.getElementById("walletMoney");
+
+
+
+if(wc)
+
+wc.innerHTML=
+
+game.wallet.coin;
+
+
+
+if(wm)
+
+wm.innerHTML=
+
+game.wallet.money;
+
+
+
+
+
+
+
+
+
+
+// TRỨNG
+
+
+let eggs=[
+
+
+["eggNormal","normal"],
+
+
+["eggSuper","super"],
+
+
+["eggGold","gold"],
+
+
+["eggDiamond","diamond"]
+
+
+];
+
+
+
+eggs.forEach(e=>{
+
+
+let el=document.getElementById(e[0]);
+
+
+if(el)
+
+
+el.innerHTML=
+
+game.eggs[e[1]];
+
+
+
+});
+
+
+
+
+
+
+
+
+
+// CÁM
+
+
+let feeds=[
+
+
+["feedNormal","normal"],
+
+
+["feedSuper","super"],
+
+
+["feedWeight","weight"],
+
+
+["feedGrow","grow"],
+
+
+["feedVip","vip"]
+
+
+];
+
+
+
+feeds.forEach(f=>{
+
+
+let el=document.getElementById(f[0]);
+
+
+if(el)
+
+
+el.innerHTML=
+
+game.feed[f[1]];
+
+
+
+});
+
+
+
+
+
+
+
+
+updateFeedDetail();
+
+
+
+renderCoop();
+
+
+
+let chicken=getCurrentChicken();
+
+
+
+if(chicken){
+
+
+
+let main=document.getElementById("mainChicken");
+
+
+
+if(main)
+
+main.innerHTML=
+
+chickenIcon(
+
+chicken.type,
+
+chicken.level
+
+);
+
+
+
+
+
+let status=document.getElementById("mainStatus");
+
+
+
+if(status)
+
+
+status.innerHTML=
+
+chickenName(chicken.type)
+
++
+
+" Lv "
+
++
+
+chicken.level;
+
+
+
+
+
+let lv=document.getElementById("level");
+
+
+if(lv)
+
+lv.innerHTML=
+
+chicken.level;
+
+
+
+
+
+let exp=document.getElementById("exp");
+
+
+if(exp)
+
+exp.innerHTML=
+
+Math.floor(chicken.exp)
+
++
+
+"/"
+
++
+
+needExp(chicken.level);
+
+
+
+
+
+let age=document.getElementById("age");
+
+
+if(age)
+
+age.innerHTML=
+
+chicken.age;
+
+
+
+}
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// ===============================
+// RENDER CHUỒNG
+// ===============================
+
+
+function renderCoop(){
+
+
+
+let box=document.getElementById("coopSlots");
+
+
+
+if(!box)
+
+return;
+
+
+
+box.innerHTML="";
+
+
+
+let coop=
+
+game.coops[game.selectedCoop];
+
+
+
+
+
+let title=document.getElementById("coopTitle");
+
+
+
+if(title)
+
+title.innerHTML=
+
+coop.name;
+
+
+
+
+
+coop.chickens.forEach((c,index)=>{
+
+
+
+let div=document.createElement("div");
+
+
+
+div.className="slot";
+
+
+
+div.onclick=function(){
+
+
+selectChicken(index);
+
+
+};
+
+
+
+
+
+div.innerHTML=
+
+
+`
+
+<div class="emoji">
+
+${chickenIcon(c.type,c.level)}
+
+</div>
+
+
+
+${chickenName(c.type)}
+
+<br>
+
+⭐ Lv ${c.level}
+
+<br>
+
+🔥 ${Math.floor(c.exp)}/${needExp(c.level)}
+
+<br>
+
+🎂 ${c.age}/${c.maxAge}
+
+`;
+
+
+
+
+box.appendChild(div);
+
+
+
+});
+
+
+
+
+
+showCoopInfo();
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// ===============================
+// MENU
+// ===============================
+
+
+function openPage(id){
+
+
+
+document.querySelectorAll(".page")
+
+.forEach(page=>{
+
+
+page.classList.remove("active");
+
+
+});
+
+
+
+
+
+let page=document.getElementById(id);
+
+
+
+if(page)
+
+page.classList.add("active");
+
+
+
+}
+
+
+
+
+
+
+
+
+
+// ===============================
+// KHỞI TẠO GAME
+// ===============================
+
+
+// Trứng đầu tiên
+
+game.coops.normal.chickens.push(
+
+createChicken(
+
+"normal",
+
+true
+
+)
+
+);
+
+
+
+
+// update lần đầu
+
+update();
+
