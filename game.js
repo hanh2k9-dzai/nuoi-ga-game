@@ -26,7 +26,7 @@ function updateGame(){
 
 
 
-    if(chicken.stage == "baby"){
+    if(chicken.level >= 1 && chicken.level < 5){
 
         icon = "🐣";
         name = "Gà mới nở";
@@ -34,8 +34,7 @@ function updateGame(){
     }
 
 
-
-    if(chicken.stage == "chick"){
+    if(chicken.level >= 5 && chicken.level < 10){
 
         icon = "🐥";
         name = "Gà con";
@@ -43,8 +42,7 @@ function updateGame(){
     }
 
 
-
-    if(chicken.stage == "adult"){
+    if(chicken.level >= 10 && chicken.level < 25){
 
         icon = "🐓";
         name = "Gà lớn";
@@ -52,8 +50,7 @@ function updateGame(){
     }
 
 
-
-    if(chicken.stage == "sellable"){
+    if(chicken.level >= 25){
 
         icon = "🐔";
         name = "Gà trưởng thành";
@@ -81,30 +78,27 @@ function updateGame(){
 
 
 
-    if(chicken.stage != "egg"){
+    if(chicken.level > 0){
 
         document.getElementById("timeBox").style.display = "none";
 
     }
 
-
 }
 
 
 
-
-// trứng nở
+// kiểm tra trứng nở
 
 function checkEgg(){
 
 
-    if(chicken.stage == "egg"){
+    if(chicken.level == 0){
 
 
         let time = Math.ceil(
             (chicken.hatchTime - Date.now()) / 1000
         );
-
 
 
         if(time > 0){
@@ -115,19 +109,18 @@ function checkEgg(){
         }
 
 
-
         if(time <= 0){
 
 
-            chicken.stage = "baby";
-
             chicken.level = 1;
+
+            chicken.stage = "baby";
 
 
             document.getElementById("timeBox").style.display="none";
 
 
-            alert("🎉 Trứng đã nở thành 🐣");
+            alert("🎉 Trứng nở thành 🐣");
 
 
         }
@@ -136,12 +129,9 @@ function checkEgg(){
     }
 
 
-
     updateGame();
 
 }
-
-
 
 
 
@@ -150,8 +140,7 @@ function checkEgg(){
 function feed(){
 
 
-
-    if(chicken.stage == "egg"){
+    if(chicken.level == 0){
 
         alert("🥚 Trứng chưa nở!");
 
@@ -161,21 +150,38 @@ function feed(){
 
 
 
+    chicken.food += 10;
+
+
     chicken.exp += 10;
 
-    chicken.food -= 2;
 
 
+    if(chicken.food > 100){
 
-    if(chicken.food < 0){
-
-        chicken.food = 0;
+        chicken.food = 100;
 
     }
 
 
 
-    checkLevel();
+    // lên level
+
+    if(chicken.exp >= 100){
+
+
+        chicken.level += 1;
+
+        chicken.exp = 0;
+
+
+        alert(
+            "🎉 Gà lên Level " 
+            + chicken.level
+        );
+
+
+    }
 
 
 
@@ -186,73 +192,29 @@ function feed(){
 
 
 
+// gà đói theo thời gian
+
+setInterval(function(){
 
 
-// kiểm tra lên cấp
-
-function checkLevel(){
+    if(chicken.level > 0 && chicken.food > 0){
 
 
-
-    if(chicken.stage == "baby"
-    && chicken.exp >= 100){
-
-
-        chicken.stage = "chick";
-
-        chicken.level = 5;
-
-        chicken.exp = 0;
-
-
-        alert("🎉 🐣 đã thành 🐥 Gà con");
+        chicken.food -= 1;
 
 
     }
 
 
-
-    else if(chicken.stage == "chick"
-    && chicken.exp >= 200){
+    updateGame();
 
 
-        chicken.stage = "adult";
-
-        chicken.level = 10;
-
-        chicken.exp = 0;
-
-
-        alert("🎉 🐥 đã thành 🐓 Gà lớn");
-
-
-    }
-
-
-
-    else if(chicken.stage == "adult"
-    && chicken.exp >= 500){
-
-
-        chicken.stage = "sellable";
-
-        chicken.level = 25;
-
-        chicken.exp = 0;
-
-
-        alert("🎉 🐔 Gà đã trưởng thành! Có thể bán");
-
-
-    }
-
-
-}
+},60000);
 
 
 
 
-// chạy kiểm tra mỗi giây
+// chạy
 
 setInterval(checkEgg,1000);
 
