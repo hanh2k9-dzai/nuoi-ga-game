@@ -1,102 +1,94 @@
-let chicken = {
+let chickens = [
 
-    level:0,
+    {
+        id: 1,
 
-    exp:0,
+        level: 0,
 
-    food:100,
+        exp: 0,
 
-    coin:0,
+        food: 100,
 
-    hatchTime:Date.now()+10000
+        hatchTime: Date.now() + 10000
+    }
 
-};
+];
+
+
+// con gà đang chọn
+let currentChicken = 0;
 
 
 
-// cập nhật
+function getChicken(){
+
+    return chickens[currentChicken];
+
+}
+
+
+
 
 function updateGame(){
 
 
-    let icon="🥚";
-    let name="Trứng";
+    let chicken = getChicken();
+
+
+    let icon = "🥚";
+    let name = "Trứng";
 
 
 
-    if(chicken.level>=1 && chicken.level<5){
+    if(chicken.level >= 1 && chicken.level < 5){
 
-        icon="🐣";
-        name="Gà mới nở";
-
-    }
-
-
-    if(chicken.level>=5 && chicken.level<10){
-
-        icon="🐥";
-        name="Gà con";
+        icon = "🐣";
+        name = "Gà mới nở";
 
     }
 
 
-    if(chicken.level>=10 && chicken.level<25){
+    if(chicken.level >= 5 && chicken.level < 10){
 
-        icon="🐓";
-        name="Gà lớn";
-
-    }
-
-
-    if(chicken.level>=25){
-
-        icon="🐔";
-        name="Gà trưởng thành";
+        icon = "🐥";
+        name = "Gà con";
 
     }
 
 
+    if(chicken.level >= 10 && chicken.level < 25){
 
-    document.getElementById("chicken").innerHTML=icon;
+        icon = "🐓";
+        name = "Gà lớn";
 
-    document.getElementById("stage").innerHTML=name;
-
-    document.getElementById("level").innerHTML=chicken.level;
-
-    document.getElementById("exp").innerHTML=chicken.exp;
-
-    document.getElementById("food").innerHTML=chicken.food;
-
-    document.getElementById("coin").innerHTML=chicken.coin;
+    }
 
 
+    if(chicken.level >= 25){
 
-    // ẩn thời gian khi đã nở
-
-    if(chicken.level>0){
-
-        document.getElementById("timeBox").style.display="none";
+        icon = "🐔";
+        name = "Gà trưởng thành";
 
     }
 
 
 
-    // hiện bán khi lv25
+    document.getElementById("chicken").innerHTML = icon;
 
-    if(chicken.level>=25){
 
-        document.getElementById("sellButton").style.display="block";
+    document.getElementById("stage").innerHTML = name;
 
-    }
-    else{
 
-        document.getElementById("sellButton").style.display="none";
+    document.getElementById("level").innerHTML = chicken.level;
 
-    }
+
+    document.getElementById("exp").innerHTML = chicken.exp;
+
+
+    document.getElementById("food").innerHTML = chicken.food;
 
 
 }
-
 
 
 
@@ -105,44 +97,33 @@ function updateGame(){
 function checkEgg(){
 
 
-    if(chicken.level==0){
+    chickens.forEach(function(chicken){
 
 
-        let time=Math.ceil(
-            (chicken.hatchTime-Date.now())/1000
-        );
+        if(chicken.level == 0){
 
 
-
-        if(time>0){
-
-            document.getElementById("time").innerHTML=
-            "🥚 Còn "+time+"s";
-
-        }
+            if(Date.now() >= chicken.hatchTime){
 
 
-
-        if(time<=0){
-
-
-            chicken.level=1;
+                chicken.level = 1;
 
 
-            document.getElementById("timeBox").style.display="none";
+                alert("🎉 Một quả trứng đã nở 🐣");
 
 
-            alert("🎉 Trứng nở thành 🐣");
+            }
 
 
         }
 
 
-    }
+    });
 
 
 
     updateGame();
+
 
 }
 
@@ -155,19 +136,13 @@ function checkEgg(){
 function feed(){
 
 
-    if(chicken.level==0){
-
-        alert("🥚 Trứng chưa nở!");
-
-        return;
-
-    }
+    let chicken = getChicken();
 
 
 
-    if(chicken.level>=25){
+    if(chicken.level == 0){
 
-        alert("🐔 Gà đã trưởng thành, hãy bán!");
+        alert("🥚 Chưa nở!");
 
         return;
 
@@ -175,114 +150,45 @@ function feed(){
 
 
 
-    chicken.food+=10;
-
-    chicken.exp+=100;
+    chicken.food += 10;
 
 
+    chicken.exp += 100; // test nhanh
 
-    if(chicken.food>100){
 
-        chicken.food=100;
+
+    if(chicken.food > 100){
+
+        chicken.food = 100;
 
     }
 
 
 
-    if(chicken.exp>=100){
+    if(chicken.exp >= 100){
 
 
         chicken.level++;
 
-        chicken.exp=0;
+        chicken.exp = 0;
 
 
         alert(
-            "🎉 Gà lên Lv "+chicken.level
+            "🎉 Gà lên Lv " + chicken.level
         );
 
 
     }
 
 
-
     updateGame();
-
 
 }
 
-
-
-
-
-// bán gà
-
-function sellChicken(){
-
-
-    if(chicken.level<25){
-
-        return;
-
-    }
-
-
-
-    chicken.coin+=500;
-
-
-
-    alert("💰 Bán gà nhận 500 xu!");
-
-
-
-    // tạo gà mới
-
-    chicken.level=0;
-
-    chicken.exp=0;
-
-    chicken.food=100;
-
-
-
-    chicken.hatchTime=Date.now()+10000;
-
-
-
-    document.getElementById("timeBox").style.display="block";
-
-
-
-    updateGame();
-
-
-}
-
-
-
-
-// đói theo thời gian
-
-setInterval(function(){
-
-
-    if(chicken.level>0 && chicken.food>0){
-
-        chicken.food--;
-
-    }
-
-
-    updateGame();
-
-
-},60000);
 
 
 
 setInterval(checkEgg,1000);
-
 
 
 updateGame();
