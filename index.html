@@ -30,13 +30,27 @@
 
 
 <div id="mainChicken">
-🐔
+
+🥚
+
 </div>
 
 
 <h2 id="mainStatus">
-Đang tải...
+
+Trứng đang nở...
+
 </h2>
+
+
+
+<div id="hatchTime">
+
+⏳ Còn 10s
+
+</div>
+
+
 
 
 
@@ -44,27 +58,71 @@
 
 
 <div class="status">
-🪙 <span id="coin">0</span>
+
+🪙 Xu:
+
+<span id="coin">
+
+0
+
+</span>
+
 </div>
+
 
 
 <div class="status">
-🥚 <span id="egg">0</span>
+
+💵 VNĐ:
+
+<span id="money">
+
+0
+
+</span>
+
 </div>
+
 
 
 <div class="status">
-⭐ Lv <span id="level">1</span>
+
+⭐ Lv:
+
+<span id="level">
+
+0
+
+</span>
+
 </div>
+
 
 
 <div class="status">
-🔥 <span id="exp">0/100</span>
+
+🔥 EXP:
+
+<span id="exp">
+
+0/100
+
+</span>
+
 </div>
+
 
 
 <div class="status">
-🎂 <span id="age">0</span>/<span id="maxAge">7</span>
+
+🎂 Tuổi:
+
+<span id="age">
+
+0
+
+</span>
+
 </div>
 
 
@@ -74,63 +132,90 @@
 
 
 
-<h3>🍚 Cho ăn</h3>
+
+<h3>🍚 Cho gà ăn</h3>
+
 
 
 <div class="buttons">
 
 
-<button onclick="feedChicken(10)">
+<button onclick="feedChicken('normal')">
+
 🌽 Cám thường
+
 <br>
-+10 EXP
+
+x0
+
 </button>
 
 
 
-<button onclick="feedChicken(30)">
+<button onclick="feedChicken('super')">
+
+✨ Cám siêu cấp
+
+<br>
+
+x0
+
+</button>
+
+
+
+<button onclick="feedChicken('weight')">
+
 🐷 Cám tăng trọng
+
 <br>
-+30 EXP
+
+x0
+
 </button>
 
 
 
-<button onclick="feedChicken(50)">
-🐖 Cám con heo
+<button onclick="feedChicken('grow')">
+
+⚡ Cám siêu tăng trưởng
+
 <br>
-+50 EXP
+
+x0
+
 </button>
 
 
 
-<button onclick="feedChicken(100)">
-⚡ Cám tăng trưởng
+<button onclick="feedChicken('vip')">
+
+🌟 Cám siêu VIP
+
 <br>
-+100 EXP
+
+x0
+
 </button>
-
-
-
-<button onclick="feedChicken(300)">
-✨ Cám siêu VIP
-<br>
-+300 EXP
-</button>
-
 
 
 </div>
 
 
 
+
+
+
 <p>
 
-🐔 Đang chọn:
+🐔 Gà đang chọn:
 
 <span id="selectedChicken">
+
 Chưa chọn
+
 </span>
+
 
 </p>
 
@@ -152,23 +237,40 @@ Chưa chọn
 <div id="coopPage" class="page">
 
 
-<h2 id="coopName">
+<h2>
 
-🏠 Chuồng thường
+🏠 Chuồng
 
 </h2>
 
 
 
+<h3 id="coopName">
+
+Chuồng thường
+
+</h3>
+
+
+
 <p>
 
-Sức chứa:
+Số lượng:
 
-<span id="coopCapacity">
-3
+<span id="chickenCount">
+
+0
+
 </span>
 
-gà
+/
+
+<span id="coopLimit">
+
+3
+
+</span>
+
 
 </p>
 
@@ -176,36 +278,32 @@ gà
 
 <div id="chickenSlots" class="slots">
 
+
 </div>
 
 
 
 
 
-<h3>🔄 Đổi chuồng</h3>
-
-
-
-<button onclick="buySuperCoop()">
+<button onclick="changeSuperCoop()">
 
 🔥 Chuồng siêu cấp
 
 <br>
 
-25.000 xu
+25000 xu
 
 </button>
 
 
 
-
-<button onclick="buyStarCoop()">
+<button onclick="changeStarCoop()">
 
 ⭐ Chuồng siêu sao
 
 <br>
 
-20.000đ
+20000 VNĐ
 
 </button>
 
@@ -227,7 +325,12 @@ gà
 <div id="storagePage" class="page">
 
 
-<h2>🥚 Kho</h2>
+<h2>
+
+🥚 Kho trứng
+
+</h2>
+
 
 
 
@@ -235,57 +338,92 @@ gà
 
 
 <p>
+
 🥚 Trứng thường:
 
-<span id="normalEgg">
+<span id="eggNormal">
+
 0
+
 </span>
 
 </p>
 
 
+<button onclick="sellEgg('normal')">
+
+Bán 25 xu
+
+</button>
+
+
+
+
 
 <p>
+
 ✨ Trứng siêu cấp:
 
-<span id="superEgg">
+<span id="eggSuper">
+
 0
+
 </span>
 
 </p>
 
 
+<button onclick="sellEgg('super')">
+
+Bán 50 xu
+
+</button>
+
+
+
+
+
 
 <p>
+
 🟡 Trứng vàng:
 
-<span id="goldEgg">
+<span id="eggGold">
+
 0
+
 </span>
 
 </p>
+
+
+<button onclick="sellEgg('gold')">
+
+Bán 1000 xu
+
+</button>
+
+
+
 
 
 
 <p>
+
 💎 Trứng kim cương:
 
-<span id="diamondEgg">
+<span id="eggDiamond">
+
 0
+
 </span>
 
 </p>
 
 
+<button onclick="sellEgg('diamond')">
 
-</div>
-
-
-
-
-<button onclick="sellNormalEgg()">
-
-🥚 Bán trứng thường
+Bán 3500 xu
 
 </button>
 
@@ -294,6 +432,7 @@ gà
 </div>
 
 
+</div>
 
 
 
@@ -301,21 +440,26 @@ gà
 
 
 
-<!-- ================= SHOP ================= -->
+
+
+<!-- ================= SHOP GÀ ================= -->
 
 
 <div id="shopPage" class="page">
 
 
-<h2>🏪 Shop gà</h2>
+<h2>
+
+🏪 Shop gà
+
+</h2>
 
 
 
 <div class="box">
 
 
-
-<button onclick="buyNormalChicken()">
+<button onclick="buyChicken('normal')">
 
 🐔 Gà thường
 
@@ -327,11 +471,7 @@ gà
 
 
 
-<br>
-
-
-
-<button onclick="buySuperChicken()">
+<button onclick="buyChicken('super')">
 
 🔥 Gà siêu cấp
 
@@ -343,33 +483,25 @@ gà
 
 
 
-<br>
-
-
-
-<button onclick="buyGoldChicken()">
+<button onclick="buyChicken('gold')">
 
 🟡 Gà vàng
 
 <br>
 
-35000đ
+35000 VNĐ
 
 </button>
 
 
 
-<br>
-
-
-
-<button onclick="buyDiamondChicken()">
+<button onclick="buyChicken('diamond')">
 
 💎 Gà kim cương
 
 <br>
 
-80000đ
+80000 VNĐ
 
 </button>
 
@@ -377,6 +509,120 @@ gà
 
 </div>
 
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- ================= SHOP CÁM ================= -->
+
+
+<div id="feedShopPage" class="page">
+
+
+<h2>
+
+🍚 Shop cám
+
+</h2>
+
+
+
+<div class="box">
+
+
+<button onclick="buyFeed('normal')">
+
+🌽 Cám thường
+
+<br>
+
+80 xu
+
+<br>
+
++40 EXP
+
+</button>
+
+
+
+<button onclick="buyFeed('super')">
+
+✨ Cám siêu cấp
+
+<br>
+
+160 xu
+
+<br>
+
++120 EXP
+
+</button>
+
+
+
+
+<button onclick="buyFeed('weight')">
+
+🐷 Cám tăng trọng
+
+<br>
+
+300 xu
+
+<br>
+
++240 EXP
+
+</button>
+
+
+
+
+
+<button onclick="buyFeed('grow')">
+
+⚡ Cám siêu tăng trưởng
+
+<br>
+
+600 xu
+
+<br>
+
++500 EXP
+
+</button>
+
+
+
+
+
+<button onclick="buyFeed('vip')">
+
+🌟 Cám siêu VIP
+
+<br>
+
+1200 xu
+
+<br>
+
++1000 EXP
+
+</button>
+
+
+
+</div>
 
 
 </div>
@@ -395,32 +641,20 @@ gà
 <div id="questPage" class="page">
 
 
-<h2>🎯 Nhiệm vụ</h2>
+<h2>
+
+🎯 Nhiệm vụ
+
+</h2>
 
 
 
-<div class="box">
+<button onclick="getQuestReward()">
 
-
-<p>
-🎁 Thưởng random
-</p>
-
-
-<p>
-500 - 5000 xu
-</p>
-
-
-
-<button onclick="questReward()">
-
-Nhận thưởng
+🎁 Nhận 10000 xu
 
 </button>
 
-
-</div>
 
 
 </div>
@@ -439,7 +673,11 @@ Nhận thưởng
 <div id="accountPage" class="page">
 
 
-<h2>👤 Tài khoản</h2>
+<h2>
+
+👤 Tài khoản
+
+</h2>
 
 
 
@@ -447,21 +685,28 @@ Nhận thưởng
 
 
 <p>
+
 🆔 ID:
 
 <span id="userID">
+
 10001
+
 </span>
 
 </p>
 
 
 
+
 <p>
+
 👤 Tên:
 
 <span id="username">
+
 ChickenPlayer
+
 </span>
 
 </p>
@@ -469,26 +714,77 @@ ChickenPlayer
 
 
 <p>
+
 🪙 Ví xu:
 
-<span id="wallet">
+<span id="walletCoin">
+
 0
+
 </span>
 
 </p>
 
 
 
-<button onclick="withdrawDemo()">
+<p>
 
-💸 Rút tiền demo
+💵 Ví VNĐ:
+
+<span id="walletMoney">
+
+0
+
+</span>
+
+</p>
+
+
+
+
+<button onclick="exchangeMoney()">
+
+🔄 Đổi 50000 xu = 500đ
 
 </button>
 
 
 
+
+<button onclick="withdrawMoney()">
+
+💸 Rút tiền
+
+</button>
+
+
+
+
+<button onclick="linkBank()">
+
+🏦 Liên kết Bank
+
+</button>
+
+
+
+
+<h3>
+
+📜 Lịch sử
+
+</h3>
+
+
+<div id="history">
+
+Chưa có
+
 </div>
 
+
+
+</div>
 
 
 </div>
@@ -507,11 +803,12 @@ ChickenPlayer
 <div class="menu">
 
 
-
 <button onclick="openPage('homePage')">
 
 🏠
+
 <br>
+
 Nhà
 
 </button>
@@ -521,7 +818,9 @@ Nhà
 <button onclick="openPage('coopPage')">
 
 🐔
+
 <br>
+
 Chuồng
 
 </button>
@@ -531,7 +830,9 @@ Chuồng
 <button onclick="openPage('storagePage')">
 
 🥚
+
 <br>
+
 Kho
 
 </button>
@@ -541,18 +842,22 @@ Kho
 <button onclick="openPage('shopPage')">
 
 🏪
+
 <br>
-Shop
+
+Gà
 
 </button>
 
 
 
-<button onclick="openPage('questPage')">
+<button onclick="openPage('feedShopPage')">
 
-🎯
+🍚
+
 <br>
-Nhiệm vụ
+
+Cám
 
 </button>
 
@@ -561,7 +866,9 @@ Nhiệm vụ
 <button onclick="openPage('accountPage')">
 
 👤
+
 <br>
+
 TK
 
 </button>
@@ -574,7 +881,6 @@ TK
 
 
 </div>
-
 
 
 <script src="game.js"></script>
