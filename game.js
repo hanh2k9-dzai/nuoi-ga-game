@@ -4,6 +4,7 @@ let chickens = [
         level: 0,
         exp: 0,
         food: 100,
+        coin: 0,
         hatchTime: Date.now() + 10000
     }
 
@@ -24,7 +25,6 @@ function getChicken(){
 
 
 function updateGame(){
-
 
     let chicken = getChicken();
 
@@ -69,21 +69,19 @@ function updateGame(){
 
     document.getElementById("chicken").innerHTML = icon;
 
-
     document.getElementById("stage").innerHTML = name;
-
 
     document.getElementById("level").innerHTML = chicken.level;
 
-
     document.getElementById("exp").innerHTML = chicken.exp;
-
 
     document.getElementById("food").innerHTML = chicken.food;
 
+    document.getElementById("coin").innerHTML = chicken.coin;
 
 
-    // Ẩn thời gian khi đã nở
+
+    // ẩn thời gian khi đã nở
 
     if(chicken.level > 0){
 
@@ -98,7 +96,7 @@ function updateGame(){
 
 
 
-    // Hiện nút bán khi Lv25
+    // hiện nút bán khi đủ lv
 
     if(chicken.level >= 25){
 
@@ -112,16 +110,13 @@ function updateGame(){
     }
 
 
-
 }
 
 
 
 
-// kiểm tra trứng
 
 function checkEgg(){
-
 
     let chicken = getChicken();
 
@@ -169,10 +164,7 @@ function checkEgg(){
 
 
 
-// cho ăn
-
 function feed(){
-
 
     let chicken = getChicken();
 
@@ -190,7 +182,7 @@ function feed(){
 
     if(chicken.level >= 25){
 
-        alert("🐔 Gà đã trưởng thành, hãy bán!");
+        alert("🐔 Gà trưởng thành rồi, hãy bán!");
 
         return;
 
@@ -200,8 +192,7 @@ function feed(){
 
     chicken.food += 10;
 
-
-    chicken.exp += 100; // test nhanh
+    chicken.exp += 100; // TEST NHANH
 
 
 
@@ -232,17 +223,13 @@ function feed(){
 
     updateGame();
 
-
 }
 
 
 
 
 
-// bán gà
-
 function sellChicken(){
-
 
     let chicken = getChicken();
 
@@ -253,6 +240,10 @@ function sellChicken(){
         return;
 
     }
+
+
+
+    chicken.coin += 500;
 
 
 
@@ -275,14 +266,13 @@ function sellChicken(){
 
     updateGame();
 
-
 }
 
 
 
 
 
-// giảm đói
+// gà đói dần
 
 setInterval(function(){
 
@@ -290,9 +280,10 @@ setInterval(function(){
     let chicken = getChicken();
 
 
+
     if(chicken.level > 0 && chicken.food > 0){
 
-        chicken.food--;
+        chicken.food -= 1;
 
     }
 
