@@ -1,21 +1,15 @@
 let chickens = [
 
     {
-        id: 1,
-
         level: 0,
-
         exp: 0,
-
         food: 100,
-
         hatchTime: Date.now() + 10000
     }
 
 ];
 
 
-// con gà đang chọn
 let currentChicken = 0;
 
 
@@ -88,42 +82,86 @@ function updateGame(){
     document.getElementById("food").innerHTML = chicken.food;
 
 
+
+    // Ẩn thời gian khi đã nở
+
+    if(chicken.level > 0){
+
+        document.getElementById("timeBox").style.display = "none";
+
+    }
+    else{
+
+        document.getElementById("timeBox").style.display = "block";
+
+    }
+
+
+
+    // Hiện nút bán khi Lv25
+
+    if(chicken.level >= 25){
+
+        document.getElementById("sellButton").style.display = "block";
+
+    }
+    else{
+
+        document.getElementById("sellButton").style.display = "none";
+
+    }
+
+
+
 }
 
 
 
-// trứng nở
+
+// kiểm tra trứng
 
 function checkEgg(){
 
 
-    chickens.forEach(function(chicken){
+    let chicken = getChicken();
 
 
-        if(chicken.level == 0){
+
+    if(chicken.level == 0){
 
 
-            if(Date.now() >= chicken.hatchTime){
+        let time = Math.ceil(
+            (chicken.hatchTime - Date.now()) / 1000
+        );
 
 
-                chicken.level = 1;
+
+        if(time > 0){
+
+            document.getElementById("time").innerHTML =
+            "🥚 Còn " + time + "s";
+
+        }
 
 
-                alert("🎉 Một quả trứng đã nở 🐣");
+
+        if(time <= 0){
 
 
-            }
+            chicken.level = 1;
+
+
+            alert("🎉 Trứng đã nở thành 🐣");
 
 
         }
 
 
-    });
+    }
 
 
 
     updateGame();
-
 
 }
 
@@ -142,7 +180,17 @@ function feed(){
 
     if(chicken.level == 0){
 
-        alert("🥚 Chưa nở!");
+        alert("🥚 Trứng chưa nở!");
+
+        return;
+
+    }
+
+
+
+    if(chicken.level >= 25){
+
+        alert("🐔 Gà đã trưởng thành, hãy bán!");
 
         return;
 
@@ -168,7 +216,7 @@ function feed(){
     if(chicken.exp >= 100){
 
 
-        chicken.level++;
+        chicken.level += 1;
 
         chicken.exp = 0;
 
@@ -181,14 +229,85 @@ function feed(){
     }
 
 
+
     updateGame();
+
 
 }
 
 
 
 
+
+// bán gà
+
+function sellChicken(){
+
+
+    let chicken = getChicken();
+
+
+
+    if(chicken.level < 25){
+
+        return;
+
+    }
+
+
+
+    alert("💰 Bán gà nhận 500 xu!");
+
+
+
+    // tạo lại trứng
+
+    chicken.level = 0;
+
+    chicken.exp = 0;
+
+    chicken.food = 100;
+
+
+    chicken.hatchTime = Date.now() + 10000;
+
+
+
+    updateGame();
+
+
+}
+
+
+
+
+
+// giảm đói
+
+setInterval(function(){
+
+
+    let chicken = getChicken();
+
+
+    if(chicken.level > 0 && chicken.food > 0){
+
+        chicken.food--;
+
+    }
+
+
+    updateGame();
+
+
+},60000);
+
+
+
+
+
 setInterval(checkEgg,1000);
+
 
 
 updateGame();
