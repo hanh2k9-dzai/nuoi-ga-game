@@ -5,7 +5,6 @@ box-sizing:border-box;
 }
 
 
-
 body{
 
 margin:0;
@@ -30,7 +29,7 @@ margin:auto;
 
 background:white;
 
-padding:20px;
+padding:15px;
 
 text-align:center;
 
@@ -60,9 +59,11 @@ display:block;
 
 h1{
 
-font-size:40px;
+font-size:38px;
 
-color:#ff9900;
+color:#ff9800;
+
+margin:10px;
 
 }
 
@@ -88,7 +89,6 @@ color:#777;
 
 /* GÀ CHÍNH */
 
-
 #mainChicken{
 
 font-size:120px;
@@ -99,14 +99,23 @@ margin:20px 0;
 
 
 
-
-#hatchTime{
+#mainStatus{
 
 font-size:22px;
 
-margin:15px;
+}
+
+
+
+
+
+#hatchTime{
+
+font-size:20px;
 
 color:#777;
+
+margin:10px;
 
 }
 
@@ -115,8 +124,7 @@ color:#777;
 
 
 
-
-/* THÔNG TIN */
+/* THỐNG KÊ */
 
 
 .stats{
@@ -129,44 +137,23 @@ justify-content:center;
 
 gap:10px;
 
-margin:15px 0;
-
 }
 
 
 
-
-.status{
+.stats div{
 
 background:#fff0b0;
 
-padding:12px;
-
 border-radius:20px;
+
+padding:10px;
 
 min-width:90px;
 
-font-size:16px;
+font-size:15px;
 
 }
-
-
-
-
-
-
-.box{
-
-background:#fff5c7;
-
-border-radius:25px;
-
-padding:20px;
-
-margin:15px 0;
-
-}
-
 
 
 
@@ -174,21 +161,6 @@ margin:15px 0;
 
 
 /* NÚT */
-
-
-.buttons{
-
-display:flex;
-
-flex-wrap:wrap;
-
-justify-content:center;
-
-gap:8px;
-
-}
-
-
 
 
 button{
@@ -201,11 +173,11 @@ color:white;
 
 padding:12px;
 
-border-radius:25px;
-
-font-size:15px;
+border-radius:20px;
 
 margin:5px;
+
+font-size:15px;
 
 cursor:pointer;
 
@@ -220,6 +192,37 @@ opacity:0.8;
 }
 
 
+
+
+.feedButtons{
+
+display:flex;
+
+flex-wrap:wrap;
+
+justify-content:center;
+
+}
+
+
+
+
+
+
+/* BOX */
+
+
+.box{
+
+background:#fff5c7;
+
+border-radius:25px;
+
+padding:15px;
+
+margin:15px 0;
+
+}
 
 
 
@@ -239,9 +242,10 @@ justify-content:center;
 
 gap:10px;
 
-margin:20px 0;
+margin-top:20px;
 
 }
+
 
 
 
@@ -249,7 +253,7 @@ margin:20px 0;
 
 width:110px;
 
-min-height:130px;
+min-height:140px;
 
 background:#fff0b0;
 
@@ -283,6 +287,8 @@ font-size:45px;
 
 
 
+
+
 /* SHOP */
 
 
@@ -293,6 +299,21 @@ font-size:45px;
 width:85%;
 
 }
+
+
+
+
+
+
+/* KHO */
+
+
+#storagePage button{
+
+width:80%;
+
+}
+
 
 
 
@@ -309,7 +330,11 @@ border-radius:15px;
 
 padding:10px;
 
-min-height:60px;
+min-height:80px;
+
+text-align:left;
+
+font-size:14px;
 
 }
 
@@ -317,7 +342,9 @@ min-height:60px;
 
 
 
-/* MENU */
+
+
+/* MENU DƯỚI */
 
 
 .menu{
@@ -344,7 +371,7 @@ display:flex;
 justify-content:space-around;
 
 
-padding:8px 5px;
+padding:8px 3px;
 
 
 border-radius:25px 25px 0 0;
@@ -353,7 +380,7 @@ border-radius:25px 25px 0 0;
 box-shadow:0 -3px 10px #ccc;
 
 
-z-index:10;
+z-index:99;
 
 }
 
@@ -367,10 +394,16 @@ background:#ffe082;
 
 color:#333;
 
-font-size:12px;
+font-size:20px;
 
-padding:8px 4px;
+padding:8px;
 
 margin:0;
+
+width:45px;
+
+height:45px;
+
+border-radius:15px;
 
 }
